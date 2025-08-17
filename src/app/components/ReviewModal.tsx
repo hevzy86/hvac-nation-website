@@ -59,8 +59,9 @@ export default function ReviewModal({ open, onClose }: { open: boolean; onClose:
       setName("");
       setRating(5);
       setMessage("");
-    } catch (err: any) {
-      setError(err.message || "Something went wrong");
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : "Something went wrong";
+      setError(message);
     } finally {
       setSubmitting(false);
     }
@@ -80,7 +81,7 @@ export default function ReviewModal({ open, onClose }: { open: boolean; onClose:
             Close
           </button>
         </div>
-        <form onSubmit={onSubmit} className="p-6 space-y-3 overflow-y-auto flex-1">
+        <form id="review-form" onSubmit={onSubmit} className="p-6 space-y-3 overflow-y-auto flex-1">
           {submitted ? (
             <div className="p-4 bg-[#f5f9ff] border border-[#e0e4ea] rounded text-[#003366]">
               Thank you! Your review was received and awaits approval.
@@ -124,10 +125,11 @@ export default function ReviewModal({ open, onClose }: { open: boolean; onClose:
         <div className="px-6 py-4 bg-white border-t border-[#e0e4ea] sticky bottom-0 z-10 flex gap-3 justify-end md:justify-start">
           {!submitted ? (
             <button
+              type="submit"
+              form="review-form"
               disabled={submitting}
               className="px-5 py-2 rounded-none bg-[#005baa] text-white font-semibold transition hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-60"
               style={{ boxShadow: "inset 0 2px 0 rgba(255,255,255,0.35), 0 10px 22px rgba(0, 91, 170, 0.22)" }}
-              onClick={(e) => { e.preventDefault(); onSubmit(e as any); }}
             >
               {submitting ? 'Submitting…' : 'Submit Review'}
             </button>
