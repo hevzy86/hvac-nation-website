@@ -59,11 +59,13 @@ export default function QuoteModal({
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-[100] flex items-end md:items-center justify-center p-0 md:p-4">
       <div className="absolute inset-0 bg-black/40" onClick={onClose} />
 
-      <div className="relative z-10 w-full max-w-2xl bg-white rounded-xl shadow-2xl border border-[#e0e4ea] overflow-hidden">
-        <div className="px-6 py-4 bg-[#005baa] text-white flex items-center justify-between border-b-4 border-[#d7263d]">
+      {/* Panel */}
+      <div className="relative z-10 w-full md:max-w-2xl bg-white md:rounded-xl shadow-2xl border border-[#e0e4ea] md:overflow-hidden max-h-[90dvh] md:max-h-[85vh] flex flex-col overscroll-contain">
+        {/* Sticky Header */}
+        <div className="px-6 py-4 bg-[#005baa] text-white flex items-center justify-between border-b-4 border-[#d7263d] sticky top-0 z-10">
           <div className="font-bold text-lg">Get My Quote</div>
           <button
             onClick={onClose}
@@ -74,7 +76,8 @@ export default function QuoteModal({
           </button>
         </div>
 
-        <div className="p-6 grid md:grid-cols-2 gap-6">
+        {/* Scrollable Body */}
+        <div className="p-6 grid md:grid-cols-2 gap-6 overflow-y-auto flex-1">
           <div>
             <div className="font-semibold text-[#003366] mb-3">Select Services</div>
             <div className="space-y-2">
@@ -110,22 +113,23 @@ export default function QuoteModal({
               <div className="text-3xl font-bold text-[#005baa]">${total.toFixed(0)}</div>
               <div className="text-xs text-[#666] mt-1">Demo estimate. Final pricing may vary after on-site diagnosis.</div>
             </div>
-            <div className="mt-4 flex gap-3">
-              <button
-                className="px-5 py-2 rounded-none bg-[#d7263d] text-white font-semibold transition hover:-translate-y-0.5 hover:bg-[#c01f32] hover:shadow-lg"
-                style={{ boxShadow: "inset 0 2px 0 rgba(255,255,255,0.35), 0 10px 22px rgba(215, 38, 61, 0.25)" }}
-                onClick={onClose}
-              >
-                Request Quote
-              </button>
-              <button
-                className="px-5 py-2 rounded-none bg-white text-[#005baa] font-semibold border border-[#005baa] transition hover:-translate-y-0.5 hover:shadow-lg"
-                onClick={onClose}
-              >
-                Cancel
-              </button>
-            </div>
           </div>
+        </div>
+        {/* Sticky Footer Actions */}
+        <div className="px-6 py-4 bg-white border-t border-[#e0e4ea] sticky bottom-0 z-10 flex gap-3 justify-end md:justify-start pb-[env(safe-area-inset-bottom)]">
+          <button
+            className="px-5 py-2 rounded-none bg-[#d7263d] text-white font-semibold transition hover:-translate-y-0.5 hover:bg-[#c01f32] hover:shadow-lg"
+            style={{ boxShadow: "inset 0 2px 0 rgba(255,255,255,0.35), 0 10px 22px rgba(215, 38, 61, 0.25)" }}
+            onClick={onClose}
+          >
+            Request Quote
+          </button>
+          <button
+            className="px-5 py-2 rounded-none bg-white text-[#005baa] font-semibold border border-[#005baa] transition hover:-translate-y-0.5 hover:shadow-lg"
+            onClick={onClose}
+          >
+            Cancel
+          </button>
         </div>
       </div>
     </div>
