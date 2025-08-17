@@ -3,6 +3,8 @@ import Image from "next/image";
 import { useState } from "react";
 import MapSection from "./components/MapSection";
 import QuoteModal, { type QuoteService } from "./components/QuoteModal";
+import ReviewModal from "./components/ReviewModal";
+import ReviewsCarousel from "./components/ReviewsCarousel";
 
 const services = [
   {
@@ -83,6 +85,7 @@ const reviews = [
 export default function Home() {
   const [quoteOpen, setQuoteOpen] = useState(false);
   const [presetService, setPresetService] = useState<string | null>(null);
+  const [reviewOpen, setReviewOpen] = useState(false);
 
   const quoteServices: QuoteService[] = services.map((s) => ({ key: s.key, label: s.name, basePrice: s.basePrice }));
   const openQuote = (serviceKey?: string) => {
@@ -90,6 +93,8 @@ export default function Home() {
     setQuoteOpen(true);
   };
   const closeQuote = () => setQuoteOpen(false);
+  const openReview = () => setReviewOpen(true);
+  const closeReview = () => setReviewOpen(false);
 
   return (
     <div className="bg-white min-h-screen text-[#222] font-sans">
@@ -190,8 +195,8 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-2 gap-4">
             <input type="tel" placeholder="Phone Number" className="p-3 rounded bg-white text-[#222] placeholder-gray-400 outline-none border border-[#e0e4ea]" required />
-            <select className="p-3 rounded bg-white text-[#222] outline-none border border-[#e0e4ea]" required>
-              <option value="" disabled selected>Select Service</option>
+            <select defaultValue="" className="p-3 rounded bg-white text-[#222] outline-none border border-[#e0e4ea]" required>
+              <option value="" disabled>Select Service</option>
               <option>Heating</option>
               <option>Cooling</option>
               <option>Plumbing</option>
@@ -267,7 +272,58 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Extended Footer */}
+      
+
+      {/* Features */}
+      <section className="max-w-5xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-8">
+        {features.map((f) => (
+          <div key={f.title} className="bg-white rounded-xl p-7 flex flex-col items-center shadow border border-[#e0e4ea]">
+            <div className="text-3xl mb-2 text-[#005baa]">{f.icon}</div>
+            <div className="text-xl font-semibold text-[#003366] mb-1">{f.title}</div>
+            <div className="text-[#222] text-center">{f.desc}</div>
+          </div>
+        ))}
+      </section>
+
+      {/* Reviews (Carousel) */}
+      <section className="max-w-5xl mx-auto px-4 py-12">
+        <h2 className="text-2xl font-bold mb-6 text-[#003366] text-center">Homeowners are talking about us daily</h2>
+        <ReviewsCarousel items={reviews} />
+        <div className="mt-8 flex justify-center gap-3">
+          <button
+            onClick={openReview}
+            className="px-6 py-2 rounded-none bg-[#005baa] text-white font-medium transition hover:-translate-y-0.5 hover:shadow-lg"
+            style={{ boxShadow: "inset 0 2px 0 rgba(255,255,255,0.35), 0 8px 18px rgba(0, 91, 170, 0.22)" }}
+          >
+            Leave a Review
+          </button>
+          <a
+            href="#"
+            className="px-6 py-2 rounded-none bg-white text-[#005baa] font-medium border border-[#005baa] transition hover:-translate-y-0.5 hover:shadow-lg"
+          >
+            Read more reviews
+          </a>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section className="max-w-3xl mx-auto px-4 py-10">
+        <h2 className="text-2xl font-bold mb-6 text-[#003366]">Contact Us</h2>
+        <form className="bg-[#f5f7fa] rounded-xl p-8 flex flex-col gap-4 shadow border border-[#e0e4ea]">
+          <input type="text" placeholder="Your Name" className="p-3 rounded bg-white text-[#222] placeholder-gray-400 outline-none border border-[#e0e4ea]" />
+          <input type="email" placeholder="Your Email" className="p-3 rounded bg-white text-[#222] placeholder-gray-400 outline-none border border-[#e0e4ea]" />
+          <textarea placeholder="How can we help you?" className="p-3 rounded bg-white text-[#222] placeholder-gray-400 outline-none border border-[#e0e4ea]" rows={4}></textarea>
+          <button
+            type="submit"
+            className="px-6 py-2 rounded-none bg-[#005baa] text-white font-semibold transition hover:-translate-y-0.5 hover:shadow-lg"
+            style={{ boxShadow: "inset 0 2px 0 rgba(255,255,255,0.35), 0 8px 18px rgba(0, 91, 170, 0.22)" }}
+          >
+            Send Message
+          </button>
+        </form>
+      </section>
+
+      {/* Extended Footer (moved to very bottom) */}
       <footer className="bg-[#f5f7fa] text-[#003366] py-10 mt-10 border-t-4 border-[#005baa]">
         <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-8">
           <div>
@@ -294,64 +350,9 @@ export default function Home() {
         <div className="text-center text-[#003366] pt-8 text-xs mt-6 border-t border-[#e0e4ea]">&copy; {new Date().getFullYear()} HVAC Nation. All rights reserved.</div>
       </footer>
 
-      {/* Features */}
-      <section className="max-w-5xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-8">
-        {features.map((f) => (
-          <div key={f.title} className="bg-white rounded-xl p-7 flex flex-col items-center shadow border border-[#e0e4ea]">
-            <div className="text-3xl mb-2 text-[#005baa]">{f.icon}</div>
-            <div className="text-xl font-semibold text-[#003366] mb-1">{f.title}</div>
-            <div className="text-[#222] text-center">{f.desc}</div>
-          </div>
-        ))}
-      </section>
-
-      {/* Reviews */}
-      <section className="max-w-3xl mx-auto px-4 py-10">
-        <h2 className="text-2xl font-bold mb-6 text-[#003366]">What Our Clients Say</h2>
-        <div className="grid md:grid-cols-2 gap-6">
-          {reviews.map((r, i) => (
-            <div key={i} className="bg-white rounded-xl p-6 shadow border border-[#e0e4ea] flex flex-col">
-              <div className="flex items-center mb-2">
-                <span className="text-lg font-semibold text-[#003366] mr-2">{r.name}</span>
-                <span className="text-[#005baa]">{'★'.repeat(r.rating)}</span>
-              </div>
-              <div className="text-[#222]">{r.text}</div>
-            </div>
-          ))}
-        </div>
-        <div className="mt-8 text-center">
-          <button
-            className="px-6 py-2 rounded-none bg-[#005baa] text-white font-medium transition hover:-translate-y-0.5 hover:shadow-lg"
-            style={{ boxShadow: "inset 0 2px 0 rgba(255,255,255,0.35), 0 8px 18px rgba(0, 91, 170, 0.22)" }}
-          >
-            Leave a Review
-          </button>
-        </div>
-      </section>
-
-      {/* Contact */}
-      <section className="max-w-3xl mx-auto px-4 py-10">
-        <h2 className="text-2xl font-bold mb-6 text-[#003366]">Contact Us</h2>
-        <form className="bg-[#f5f7fa] rounded-xl p-8 flex flex-col gap-4 shadow border border-[#e0e4ea]">
-          <input type="text" placeholder="Your Name" className="p-3 rounded bg-white text-[#222] placeholder-gray-400 outline-none border border-[#e0e4ea]" />
-          <input type="email" placeholder="Your Email" className="p-3 rounded bg-white text-[#222] placeholder-gray-400 outline-none border border-[#e0e4ea]" />
-          <textarea placeholder="How can we help you?" className="p-3 rounded bg-white text-[#222] placeholder-gray-400 outline-none border border-[#e0e4ea]" rows={4}></textarea>
-          <button
-            type="submit"
-            className="px-6 py-2 rounded-none bg-[#005baa] text-white font-semibold transition hover:-translate-y-0.5 hover:shadow-lg"
-            style={{ boxShadow: "inset 0 2px 0 rgba(255,255,255,0.35), 0 8px 18px rgba(0, 91, 170, 0.22)" }}
-          >
-            Send Message
-          </button>
-        </form>
-      </section>
-
-      <footer className="text-center text-[#003366] py-8 text-sm bg-white border-t border-[#e0e4ea]">
-        &copy; {new Date().getFullYear()} HVAC Nation. All rights reserved.
-      </footer>
-
-      {/* Quote Modal */}
+      {/* Modals */}
       <QuoteModal open={quoteOpen} onClose={closeQuote} presetService={presetService} services={quoteServices} />
+      <ReviewModal open={reviewOpen} onClose={closeReview} />
     </div>
   );
 }
