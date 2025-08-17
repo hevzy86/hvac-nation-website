@@ -26,9 +26,28 @@ export default function QuoteModal({
       const initial: Record<string, number> = {};
       if (presetService) initial[presetService] = 1;
       setSelected(initial);
-      // Prevent background scroll
-      document.body.style.overflow = "hidden";
-      return () => { document.body.style.overflow = ""; };
+      // Prevent background scroll (robust for iOS): lock body and restore scroll position on close
+      const y = window.scrollY || 0;
+      const body = document.body;
+      const html = document.documentElement;
+      const prevHtmlOverflow = html.style.overflow;
+      body.style.position = 'fixed';
+      body.style.top = `-${y}px`;
+      body.style.left = '0';
+      body.style.right = '0';
+      body.style.width = '100%';
+      body.style.overflow = 'hidden';
+      html.style.overflow = 'hidden';
+      return () => {
+        body.style.position = '';
+        body.style.top = '';
+        body.style.left = '';
+        body.style.right = '';
+        body.style.width = '';
+        body.style.overflow = '';
+        html.style.overflow = prevHtmlOverflow;
+        window.scrollTo(0, y);
+      };
     }
   }, [open, presetService]);
 
@@ -59,11 +78,11 @@ export default function QuoteModal({
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-end md:items-center justify-center p-0 md:p-4">
+    <div className="fixed inset-0 z-[100] flex items-end md:items-center justify-center p-0 md:p-4 overscroll-contain">
       <div className="absolute inset-0 bg-black/40" onClick={onClose} />
 
       {/* Panel */}
-      <div className="relative z-10 w-full md:max-w-2xl bg-white md:rounded-xl shadow-2xl border border-[#e0e4ea] md:overflow-hidden h-[90dvh] md:max-h-[85vh] flex flex-col">
+      <div className="relative z-10 w-full md:max-w-2xl bg-white md:rounded-xl shadow-2xl border border-[#e0e4ea] md:overflow-hidden h-[100svh] md:max-h-[85vh] flex flex-col overscroll-contain">
         {/* Sticky Header */}
         <div className="px-6 py-4 bg-[#005baa] text-white flex items-center justify-between border-b-4 border-[#d7263d] sticky top-0 z-10">
           <div className="font-bold text-lg">Get My Quote</div>
@@ -77,7 +96,7 @@ export default function QuoteModal({
         </div>
 
         {/* Scrollable Body */}
-        <div className="p-6 grid md:grid-cols-2 gap-6 overflow-y-auto flex-1" style={{ WebkitOverflowScrolling: 'touch' }}>
+        <div className="p-6 grid md:grid-cols-2 gap-6 overflow-y-auto flex-1 overscroll-contain" style={{ WebkitOverflowScrolling: 'touch' }}>
           <div>
             <div className="font-semibold text-[#003366] mb-3">Select Services</div>
             <div className="space-y-2">
