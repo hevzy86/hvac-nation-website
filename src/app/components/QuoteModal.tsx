@@ -63,7 +63,7 @@ export default function QuoteModal({
       <div className="absolute inset-0 bg-black/40" onClick={onClose} />
 
       {/* Panel */}
-      <div className="relative z-10 w-full md:max-w-2xl bg-white md:rounded-xl shadow-2xl border border-[#e0e4ea] md:overflow-hidden max-h-[90dvh] md:max-h-[85vh] flex flex-col overscroll-contain">
+      <div className="relative z-10 w-full md:max-w-2xl bg-white md:rounded-xl shadow-2xl border border-[#e0e4ea] md:overflow-hidden h-[90dvh] md:max-h-[85vh] flex flex-col">
         {/* Sticky Header */}
         <div className="px-6 py-4 bg-[#005baa] text-white flex items-center justify-between border-b-4 border-[#d7263d] sticky top-0 z-10">
           <div className="font-bold text-lg">Get My Quote</div>
@@ -77,7 +77,7 @@ export default function QuoteModal({
         </div>
 
         {/* Scrollable Body */}
-        <div className="p-6 grid md:grid-cols-2 gap-6 overflow-y-auto flex-1">
+        <div className="p-6 grid md:grid-cols-2 gap-6 overflow-y-auto flex-1" style={{ WebkitOverflowScrolling: 'touch' }}>
           <div>
             <div className="font-semibold text-[#003366] mb-3">Select Services</div>
             <div className="space-y-2">
