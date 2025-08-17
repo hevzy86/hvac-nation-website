@@ -1,0 +1,6 @@
+<!-- Plumbing Icon -->
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="24" cy="24" r="22" stroke="#38BDF8" stroke-width="4" fill="#1E293B"/>
+  <rect x="16" y="28" width="16" height="8" rx="4" fill="#38BDF8"/>
+  <rect x="22" y="12" width="4" height="16" rx="2" fill="#38BDF8"/>
+</svg>

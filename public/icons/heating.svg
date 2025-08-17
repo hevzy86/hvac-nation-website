@@ -1,0 +1,5 @@
+<!-- Heating Icon -->
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="24" cy="24" r="22" stroke="#38BDF8" stroke-width="4" fill="#1E293B"/>
+  <path d="M24 36c-6-5-8-9-8-13a8 8 0 1 1 16 0c0 4-2 8-8 13z" fill="#38BDF8"/>
+</svg>
