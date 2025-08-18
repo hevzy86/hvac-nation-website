@@ -51,6 +51,55 @@ const services = [
   },
 ];
 
+// Primary nav dropdown data
+const coolingMenu = [
+  "Air Conditioning Repair",
+  "Air Conditioning Install",
+  "Air Conditioning Maintenance",
+  "Heat Pumps",
+  "Mini-Splits",
+  "Indoor Air Quality Assessment",
+  "Air Duct Repair",
+  "Air Duct Install",
+  "Air Duct Sealing",
+];
+
+const plumbingMenu = [
+  "Plumbing Repair",
+  "Plumbing Inspection",
+  "Repiping Install",
+  "Water Heaters",
+  "Tankless Services",
+  "Sump Pumps",
+  "Gas Lines",
+  "Kitchen Plumbing Repair",
+  "Kitchen Plumbing Install",
+  "Water Lines",
+  "Water Filtration",
+  "Slab Leak Detection",
+];
+
+const drainsMenu = [
+  "Drain Clearing Service",
+  "Rooter Services",
+  "Burst Pipe Repair",
+  "Camera Inspection Service",
+  "Hydro Jetting Service",
+  "Trenchless Sewer Lines",
+  "Sewer Lines",
+  "Slab Leak Detection",
+];
+
+const heatingMenu = [
+  "Heating Repair",
+  "Heating Install",
+  "Heating Maintenance",
+  "Furnaces",
+  "Heat Pumps",
+  "Air Quality",
+  "Smart Thermostat Service",
+];
+
 const features = [
   {
     title: "Fast Response",
@@ -87,7 +136,11 @@ export default function Home() {
   const [presetService, setPresetService] = useState<string | null>(null);
   const [reviewOpen, setReviewOpen] = useState(false);
 
-  const quoteServices: QuoteService[] = services.map((s) => ({ key: s.key, label: s.name, basePrice: s.basePrice }));
+  const quoteServices: QuoteService[] = services.map((s) => ({
+    key: s.key,
+    label: s.name,
+    basePrice: s.basePrice,
+  }));
   const openQuote = (serviceKey?: string) => {
     setPresetService(serviceKey ?? null);
     setQuoteOpen(true);
@@ -98,22 +151,124 @@ export default function Home() {
 
   return (
     <div className="bg-white min-h-screen text-[#222] font-sans">
-      {/* Top Banner & Contact (sticky) */}
-      <header className="sticky top-0 z-50 flex flex-col md:flex-row items-center justify-between px-4 py-3 bg-[#005baa] border-b-4 border-[#d7263d] shadow-lg">
-        <div className="flex items-center gap-3">
-          <Image src="/next.svg" alt="Company Logo" width={120} height={38} />
-          <span className="ml-2 text-white font-bold text-lg tracking-wide">HVAC Nation</span>
+      {/* Top Bar (2px) — switch to Royal Blue by changing color to #1E73E8 */}
+      <div className="sticky top-0 z-50">
+        <div className="h-2 bg-[#1F2937]" />
+      </div>
+
+      {/* Header (white) */}
+      <header className="sticky top-2 z-50 bg-white border-b border-[#e0e4ea] shadow-sm">
+        <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-6">
+          <div className="flex items-center gap-3">
+            <Image
+              src="/next.svg"
+              alt="Company Logo"
+              width={120}
+              height={38}
+            />
+            <span className="ml-2 text-[#003366] font-bold text-lg tracking-wide">
+              HVAC Nation
+            </span>
+          </div>
+
+          {/* primary nav with dropdowns */}
+          <nav className="hidden md:flex items-center gap-2 text-sm text-[#2c3545] relative z-[60]">
+            {/* Cooling */}
+            <div className="relative group">
+              <button className="px-3 py-2 hover:text-[#005baa] font-medium flex items-center gap-1">
+                <span className="underline decoration-[#c9d6e6] underline-offset-4">Cooling</span>
+                <span className="text-xs">▾</span>
+              </button>
+              <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition pointer-events-none group-hover:pointer-events-auto absolute left-0 top-full mt-2 w-[320px] bg-white border border-[#e0e4ea] rounded-lg shadow-xl p-3">
+                <ul className="max-h-[70vh] overflow-auto">
+                  {coolingMenu.map((label) => (
+                    <li key={label}>
+                      <a href="#" className="block px-3 py-2 rounded hover:bg-[#f5f7fa] text-[#2c3545]">{label}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Plumbing */}
+            <div className="relative group">
+              <button className="px-3 py-2 hover:text-[#005baa] font-medium flex items-center gap-1">
+                <span className="underline decoration-[#c9d6e6] underline-offset-4">Plumbing</span>
+                <span className="text-xs">▾</span>
+              </button>
+              <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition pointer-events-none group-hover:pointer-events-auto absolute left-0 top-full mt-2 w-[320px] bg-white border border-[#e0e4ea] rounded-lg shadow-xl p-3">
+                <ul className="max-h-[70vh] overflow-auto">
+                  {plumbingMenu.map((label) => (
+                    <li key={label}>
+                      <a href="#" className="block px-3 py-2 rounded hover:bg-[#f5f7fa] text-[#2c3545]">{label}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Drains */}
+            <div className="relative group">
+              <button className="px-3 py-2 hover:text-[#005baa] font-medium flex items-center gap-1">
+                <span className="underline decoration-[#c9d6e6] underline-offset-4">Drains</span>
+                <span className="text-xs">▾</span>
+              </button>
+              <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition pointer-events-none group-hover:pointer-events-auto absolute left-0 top-full mt-2 w-[320px] bg-white border border-[#e0e4ea] rounded-lg shadow-xl p-3">
+                <ul className="max-h-[70vh] overflow-auto">
+                  {drainsMenu.map((label) => (
+                    <li key={label}>
+                      <a href="#" className="block px-3 py-2 rounded hover:bg-[#f5f7fa] text-[#2c3545]">{label}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Heating */}
+            <div className="relative group">
+              <button className="px-3 py-2 hover:text-[#005baa] font-medium flex items-center gap-1">
+                <span className="underline decoration-[#c9d6e6] underline-offset-4">Heating</span>
+                <span className="text-xs">▾</span>
+              </button>
+              <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition pointer-events-none group-hover:pointer-events-auto absolute left-0 top-full mt-2 w-[320px] bg-white border border-[#e0e4ea] rounded-lg shadow-xl p-3">
+                <ul className="max-h-[70vh] overflow-auto">
+                  {heatingMenu.map((label) => (
+                    <li key={label}>
+                      <a href="#" className="block px-3 py-2 rounded hover:bg-[#f5f7fa] text-[#2c3545]">{label}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </nav>
+
+          {/* actions */}
+          <div className="flex items-center gap-2 md:gap-6">
+            <span className="text-[#003366] font-semibold text-sm">4.9 ★</span>
+            <a
+              href="tel:+1234567890"
+              className="text-[#003366] font-semibold text-sm hover:underline"
+            >
+              (234) 567-890
+            </a>
+            <button
+              onClick={() => openQuote()}
+              className="px-4 py-2 rounded-none bg-[#d7263d] text-white font-medium hover:bg-[#c01f32] transition text-sm shadow transform hover:-translate-y-0.5 hover:shadow-lg"
+              style={{ boxShadow: "inset 0 2px 0 rgba(255,255,255,0.35), 0 8px 18px rgba(215, 38, 61, 0.22)" }}
+            >
+              Get My Quote
+            </button>
+          </div>
         </div>
-        <div className="flex flex-col md:flex-row items-center gap-2 md:gap-6 mt-2 md:mt-0">
-          <span className="text-white font-semibold text-sm">4.9 ★</span>
-          <a href="tel:+1234567890" className="text-white font-semibold text-sm hover:underline">(234) 567-890</a>
-          <button
-            onClick={() => openQuote()}
-            className="px-4 py-2 rounded-none bg-[#d7263d] text-white font-medium hover:bg-[#c01f32] transition text-sm shadow transform hover:-translate-y-0.5 hover:shadow-lg"
-            style={{ boxShadow: "inset 0 2px 0 rgba(255,255,255,0.35), 0 8px 18px rgba(215, 38, 61, 0.22)" }}
-          >
-            Get My Quote
-          </button>
+
+        {/* secondary nav */}
+        <div className="hidden md:block bg-white">
+          <div className="max-w-6xl mx-auto px-4 pb-3 flex items-center gap-6 text-sm text-[#2c3545]">
+            <a href="#" className="hover:text-[#005baa] underline decoration-transparent hover:decoration-[#0B63CE] decoration-2 underline-offset-8">Make‑A‑Wish®</a>
+            <a href="#" className="hover:text-[#005baa] underline decoration-transparent hover:decoration-[#0B63CE] decoration-2 underline-offset-8">All Offers</a>
+            <a href="#" className="hover:text-[#005baa] underline decoration-transparent hover:decoration-[#0B63CE] decoration-2 underline-offset-8">Contact Us</a>
+            <a href="#" className="hover:text-[#005baa] underline decoration-transparent hover:decoration-[#0B63CE] decoration-2 underline-offset-8">About Us</a>
+          </div>
         </div>
       </header>
 
@@ -121,64 +276,66 @@ export default function Home() {
 
       {/* Language Switcher removed as requested */}
 
-      {/* Hero Section (full-width background including CTA) */}
-      <section className="relative w-full border-b border-[#f5f7fa] overflow-hidden">
-        {/* Background image with semi-transparency */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage: 'url(/images/Hero_HVAC.jpg)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            opacity: 0.2,
-          }}
-        />
-        <div className="relative z-10 max-w-6xl mx-auto px-4 py-12">
-          <div className="flex flex-col md:flex-row items-center">
-            <div className="flex-1 text-center md:text-left">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[#003366] drop-shadow">Your Comfort, Our Mission</h1>
-              <p className="text-lg md:text-xl text-[#222] mb-6">HVAC, Plumbing & Electrical Services — Fast, Reliable, Trusted.</p>
-            </div>
-            <div className="flex-1 flex justify-center md:justify-end mt-8 md:mt-0">
-              <Image src="/icons/cooling.svg" alt="Hero" width={180} height={180} className="drop-shadow-xl" />
-            </div>
+      {/* Hero Section — reference style with gradient overlay and CTA pill */}
+      <section className="relative w-full overflow-hidden pb-40 md:pb-52">
+        {/* Background image */}
+        <div className="absolute inset-0" style={{
+          backgroundImage: "url(/images/Hero_HVAC.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }} />
+        {/* Blue gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0B63CE]/70 via-[#0B63CE]/55 to-[#0B63CE]/35" />
+
+        <div className="relative max-w-6xl mx-auto px-4 pt-12 md:pt-16">
+          <div className="max-w-3xl text-white">
+            <div className="text-sm uppercase tracking-wide opacity-90">Excellence with a Personal Touch</div>
+            <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mt-2 drop-shadow">Trusted Plumbing, Drains & HVAC Services</h1>
+            <p className="text-base md:text-lg mt-3 opacity-95 drop-shadow">
+              Proudly serving our local communities with fast, reliable, and trusted service.
+            </p>
           </div>
-          <div className="mt-6 flex justify-center">
-            <button
-              onClick={() => openQuote()}
-              className="px-10 py-3.5 rounded-none bg-[#d7263d] text-white font-semibold text-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5 hover:bg-[#c01f32]"
-              style={{ boxShadow: "inset 0 2px 0 rgba(255,255,255,0.35), 0 10px 22px rgba(215, 38, 61, 0.25)" }}
-            >
-              Get My Quote
+
+          {/* CTA pill (centered) */}
+          <div className="mt-6 md:mt-8 mx-auto inline-flex items-center gap-3 bg-white rounded-full px-3 md:px-4 py-2 md:py-2.5 shadow-xl border border-[#e0e4ea]" style={{ boxShadow: "0 14px 30px rgba(0,0,0,0.15)" }}>
+            <a href="tel:+1234567890" className="flex items-center gap-2 rounded-full bg-[#d7263d] text-white px-3 md:px-4 py-2 font-semibold" style={{ boxShadow: "inset 0 2px 0 rgba(255,255,255,0.35)" }}>
+              <span>☎</span>
+              <span>(234) 567-890</span>
+            </a>
+            <button onClick={() => openQuote()} className="flex items-center gap-2 rounded-full bg-[#005baa] text-white px-3 md:px-4 py-2 font-semibold hover:bg-[#004a8d]" style={{ boxShadow: "inset 0 2px 0 rgba(255,255,255,0.35)" }}>
+              <span>📅</span>
+              <span>Schedule Now</span>
             </button>
+            <div className="hidden sm:flex items-center gap-2 text-[#2c3545] ml-1">
+              <span className="text-[#f59e0b]">★★★★★</span>
+              <span className="text-xs md:text-sm">6222 Reviews</span>
+              <Image src="/globe.svg" alt="reviews" width={18} height={18} />
+            </div>
           </div>
         </div>
-      </section>
 
-      {/* Services Menu (reference style) */}
-      <section className="bg-[#f5f7fa] max-w-6xl mx-auto px-4 py-12 rounded-xl my-8 border border-[#e0e4ea]">
-        <h2 className="text-2xl font-bold mb-8 text-[#003366] text-center">Our Services</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {services.map((s) => (
-            <div
-              key={s.name}
-              className="bg-white rounded-xl p-8 flex flex-col items-center shadow border border-[#e0e4ea] transition transform hover:-translate-y-0.5 hover:shadow-lg cursor-pointer"
-              onClick={() => openQuote(s.key)}
-            >
-              <div className="mb-3 opacity-90" style={{ filter: 'grayscale(100%)' }}>
-                <Image src={s.icon} alt={s.name} width={56} height={56} />
+        {/* Floating service cards */}
+        <div className="relative max-w-6xl mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 -mb-12 md:-mb-16 translate-y-12 md:translate-y-14">
+            {[
+              { key: 'cooling', title: 'Cooling', icon: '/images/cooling-icon.webp', items: ['A/C Repair','A/C Installation','A/C Maintenance','All Cooling Services'] },
+              { key: 'plumbing', title: 'Plumbing', icon: '/images/plumbing-icon.webp', items: ['Plumbing Repair','Water Heaters','Plumbing Inspections','All Plumbing Services'] },
+              { key: 'drains', title: 'Drains', icon: '/images/drains-icon.webp', items: ['Drain Clearing','Camera Inspections','Sewer Lines','All Drains Services'] },
+              { key: 'heating', title: 'Heating', icon: '/images/heating-icon.webp', items: ['General Heating Repair','Furnace Install','Heat Pump Repair','All Heating Services'] },
+            ].map((card) => (
+              <div key={card.title} className="bg-[#d7263d] text-white rounded-2xl shadow-xl p-4 md:p-5 flex flex-col items-center border border-[#c01f32]" style={{ boxShadow: '0 18px 30px rgba(215,38,61,0.25)' }}>
+                <div className="-mt-9 mb-2 md:mb-3 w-14 h-14 md:w-16 md:h-16 rounded-full bg-white shadow flex items-center justify-center border border-[#e0e4ea]">
+                  <Image src={card.icon} alt={card.title} width={36} height={36} />
+                </div>
+                <div className="text-lg md:text-xl font-extrabold tracking-wide mb-3">{card.title}</div>
+                <div className="w-full flex flex-col gap-2">
+                  {card.items.map((it) => (
+                    <button type="button" key={it} onClick={() => openQuote(card.key)} className="w-full bg-white text-[#2c3545] rounded-full py-2 text-xs md:text-sm font-semibold shadow hover:bg-[#f5f7fa]">{it}</button>
+                  ))}
+                </div>
               </div>
-              <div className="text-xl font-bold text-[#222] text-center mb-2">{s.name}</div>
-              <div className="text-[#222] text-center text-sm mb-4 max-w-[260px]">{s.desc}</div>
-              <button
-                className="px-5 py-2 rounded-full bg-[#d7263d] text-white text-sm font-semibold shadow-md hover:bg-[#c01f32] transition transform hover:-translate-y-0.5 hover:shadow-lg"
-                onClick={(e) => { e.stopPropagation(); openQuote(s.key); }}
-                style={{ boxShadow: '0 10px 22px rgba(215, 38, 61, 0.25)' }}
-              >
-                Get My Quote {'>'}
-              </button>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
@@ -186,17 +343,46 @@ export default function Home() {
       <MapSection />
 
       {/* Booking Section */}
-      <section id="book" className="max-w-3xl mx-auto px-4 py-12">
-        <h2 className="text-2xl font-bold mb-6 text-[#003366]">Book a Service</h2>
+      <section
+        id="book"
+        className="max-w-3xl mx-auto px-4 py-12"
+      >
+        <h2 className="text-2xl font-bold mb-6 text-[#003366]">
+          Book a Service
+        </h2>
         <form className="bg-[#f5f7fa] rounded-xl p-8 flex flex-col gap-4 shadow border border-[#e0e4ea]">
           <div className="grid md:grid-cols-2 gap-4">
-            <input type="text" placeholder="Your Name" className="p-3 rounded bg-white text-[#222] placeholder-gray-400 outline-none border border-[#e0e4ea]" required />
-            <input type="email" placeholder="Your Email" className="p-3 rounded bg-white text-[#222] placeholder-gray-400 outline-none border border-[#e0e4ea]" required />
+            <input
+              type="text"
+              placeholder="Your Name"
+              className="p-3 rounded bg-white text-[#222] placeholder-gray-400 outline-none border border-[#e0e4ea]"
+              required
+            />
+            <input
+              type="email"
+              placeholder="Your Email"
+              className="p-3 rounded bg-white text-[#222] placeholder-gray-400 outline-none border border-[#e0e4ea]"
+              required
+            />
           </div>
           <div className="grid md:grid-cols-2 gap-4">
-            <input type="tel" placeholder="Phone Number" className="p-3 rounded bg-white text-[#222] placeholder-gray-400 outline-none border border-[#e0e4ea]" required />
-            <select defaultValue="" className="p-3 rounded bg-white text-[#222] outline-none border border-[#e0e4ea]" required>
-              <option value="" disabled>Select Service</option>
+            <input
+              type="tel"
+              placeholder="Phone Number"
+              className="p-3 rounded bg-white text-[#222] placeholder-gray-400 outline-none border border-[#e0e4ea]"
+              required
+            />
+            <select
+              defaultValue=""
+              className="p-3 rounded bg-white text-[#222] outline-none border border-[#e0e4ea]"
+              required
+            >
+              <option
+                value=""
+                disabled
+              >
+                Select Service
+              </option>
               <option>Heating</option>
               <option>Cooling</option>
               <option>Plumbing</option>
@@ -209,14 +395,29 @@ export default function Home() {
             </select>
           </div>
           <div className="grid md:grid-cols-2 gap-4">
-            <input type="date" className="p-3 rounded bg-white text-[#222] placeholder-gray-400 outline-none border border-[#e0e4ea]" required />
-            <input type="time" className="p-3 rounded bg-white text-[#222] placeholder-gray-400 outline-none border border-[#e0e4ea]" required />
+            <input
+              type="date"
+              className="p-3 rounded bg-white text-[#222] placeholder-gray-400 outline-none border border-[#e0e4ea]"
+              required
+            />
+            <input
+              type="time"
+              className="p-3 rounded bg-white text-[#222] placeholder-gray-400 outline-none border border-[#e0e4ea]"
+              required
+            />
           </div>
-          <textarea placeholder="Additional Comments (Optional)" className="p-3 rounded bg-white text-[#222] placeholder-gray-400 outline-none border border-[#e0e4ea]" rows={3}></textarea>
+          <textarea
+            placeholder="Additional Comments (Optional)"
+            className="p-3 rounded bg-white text-[#222] placeholder-gray-400 outline-none border border-[#e0e4ea]"
+            rows={3}
+          ></textarea>
           <button
             type="submit"
             className="block w-fit mx-auto px-10 py-3.5 rounded-none bg-[#d7263d] text-white font-semibold text-lg hover:bg-[#c01f32] transition transform hover:-translate-y-0.5 mt-2 shadow-lg hover:shadow-xl"
-            style={{ boxShadow: "inset 0 2px 0 rgba(255,255,255,0.35), 0 10px 22px rgba(215, 38, 61, 0.25)" }}
+            style={{
+              boxShadow:
+                "inset 0 2px 0 rgba(255,255,255,0.35), 0 10px 22px rgba(215, 38, 61, 0.25)",
+            }}
           >
             Book Service
           </button>
@@ -242,29 +443,52 @@ export default function Home() {
       <section className="max-w-6xl mx-auto px-4 py-8 grid md:grid-cols-2 gap-10 items-center bg-white border-b border-[#f5f7fa]">
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-4">
-            <Image src="/icons/cooling.svg" alt="Fast" width={48} height={48} />
+            <Image
+              src="/icons/cooling.svg"
+              alt="Fast"
+              width={48}
+              height={48}
+            />
             <div>
-              <div className="text-lg font-bold text-[#003366]">We arrive in minutes, not days.</div>
-              <div className="text-[#222] text-sm">Always a live person, always ready to help, fully stocked trucks.</div>
+              <div className="text-lg font-bold text-[#003366]">
+                We arrive in minutes, not days.
+              </div>
+              <div className="text-[#222] text-sm">
+                Always a live person, always ready to help, fully stocked
+                trucks.
+              </div>
             </div>
           </div>
           <div className="flex items-center gap-4">
             <span className="text-3xl">💯</span>
             <div>
-              <div className="text-lg font-bold text-[#003366]">100% money-back guarantee.</div>
-              <div className="text-[#222] text-sm">If you’re not satisfied — you get your money back.</div>
+              <div className="text-lg font-bold text-[#003366]">
+                100% money-back guarantee.
+              </div>
+              <div className="text-[#222] text-sm">
+                If you’re not satisfied — you get your money back.
+              </div>
             </div>
           </div>
           <div className="flex items-center gap-4">
             <span className="text-3xl">⭐</span>
             <div>
-              <div className="text-lg font-bold text-[#003366]">Thousands of 5-Star reviews.</div>
-              <div className="text-[#222] text-sm">Professional, careful, and trusted by thousands of homeowners.</div>
+              <div className="text-lg font-bold text-[#003366]">
+                Thousands of 5-Star reviews.
+              </div>
+              <div className="text-[#222] text-sm">
+                Professional, careful, and trusted by thousands of homeowners.
+              </div>
             </div>
           </div>
         </div>
         <div className="flex flex-col items-center gap-6">
-          <Image src="/next.svg" alt="Guarantee Badge" width={120} height={38} />
+          <Image
+            src="/next.svg"
+            alt="Guarantee Badge"
+            width={120}
+            height={38}
+          />
           <div className="flex flex-col items-center">
             <span className="text-[#d7263d] text-5xl font-bold">5</span>
             <span className="text-[#003366] text-lg">Year Warranty</span>
@@ -272,14 +496,17 @@ export default function Home() {
         </div>
       </section>
 
-      
-
       {/* Features */}
       <section className="max-w-5xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-8">
         {features.map((f) => (
-          <div key={f.title} className="bg-white rounded-xl p-7 flex flex-col items-center shadow border border-[#e0e4ea]">
+          <div
+            key={f.title}
+            className="bg-white rounded-xl p-7 flex flex-col items-center shadow border border-[#e0e4ea]"
+          >
             <div className="text-3xl mb-2 text-[#005baa]">{f.icon}</div>
-            <div className="text-xl font-semibold text-[#003366] mb-1">{f.title}</div>
+            <div className="text-xl font-semibold text-[#003366] mb-1">
+              {f.title}
+            </div>
             <div className="text-[#222] text-center">{f.desc}</div>
           </div>
         ))}
@@ -287,13 +514,18 @@ export default function Home() {
 
       {/* Reviews (Carousel) */}
       <section className="max-w-5xl mx-auto px-4 py-12">
-        <h2 className="text-2xl font-bold mb-6 text-[#003366] text-center">Homeowners are talking about us daily</h2>
+        <h2 className="text-2xl font-bold mb-6 text-[#003366] text-center">
+          Homeowners are talking about us daily
+        </h2>
         <ReviewsCarousel items={reviews} />
         <div className="mt-8 flex justify-center gap-3">
           <button
             onClick={openReview}
             className="px-6 py-2 rounded-none bg-[#005baa] text-white font-medium transition hover:-translate-y-0.5 hover:shadow-lg"
-            style={{ boxShadow: "inset 0 2px 0 rgba(255,255,255,0.35), 0 8px 18px rgba(0, 91, 170, 0.22)" }}
+            style={{
+              boxShadow:
+                "inset 0 2px 0 rgba(255,255,255,0.35), 0 8px 18px rgba(0, 91, 170, 0.22)",
+            }}
           >
             Leave a Review
           </button>
@@ -310,13 +542,28 @@ export default function Home() {
       <section className="max-w-3xl mx-auto px-4 py-10">
         <h2 className="text-2xl font-bold mb-6 text-[#003366]">Contact Us</h2>
         <form className="bg-[#f5f7fa] rounded-xl p-8 flex flex-col gap-4 shadow border border-[#e0e4ea]">
-          <input type="text" placeholder="Your Name" className="p-3 rounded bg-white text-[#222] placeholder-gray-400 outline-none border border-[#e0e4ea]" />
-          <input type="email" placeholder="Your Email" className="p-3 rounded bg-white text-[#222] placeholder-gray-400 outline-none border border-[#e0e4ea]" />
-          <textarea placeholder="How can we help you?" className="p-3 rounded bg-white text-[#222] placeholder-gray-400 outline-none border border-[#e0e4ea]" rows={4}></textarea>
+          <input
+            type="text"
+            placeholder="Your Name"
+            className="p-3 rounded bg-white text-[#222] placeholder-gray-400 outline-none border border-[#e0e4ea]"
+          />
+          <input
+            type="email"
+            placeholder="Your Email"
+            className="p-3 rounded bg-white text-[#222] placeholder-gray-400 outline-none border border-[#e0e4ea]"
+          />
+          <textarea
+            placeholder="How can we help you?"
+            className="p-3 rounded bg-white text-[#222] placeholder-gray-400 outline-none border border-[#e0e4ea]"
+            rows={4}
+          ></textarea>
           <button
             type="submit"
             className="px-6 py-2 rounded-none bg-[#005baa] text-white font-semibold transition hover:-translate-y-0.5 hover:shadow-lg"
-            style={{ boxShadow: "inset 0 2px 0 rgba(255,255,255,0.35), 0 8px 18px rgba(0, 91, 170, 0.22)" }}
+            style={{
+              boxShadow:
+                "inset 0 2px 0 rgba(255,255,255,0.35), 0 8px 18px rgba(0, 91, 170, 0.22)",
+            }}
           >
             Send Message
           </button>
@@ -327,32 +574,104 @@ export default function Home() {
       <footer className="bg-[#f5f7fa] text-[#003366] py-10 mt-10 border-t-4 border-[#005baa]">
         <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-8">
           <div>
-            <Image src="/next.svg" alt="Company Logo" width={100} height={32} />
-            <div className="mt-3 text-sm">Your Comfort, Our Mission.<br/>Serving the region with pride.</div>
+            <Image
+              src="/next.svg"
+              alt="Company Logo"
+              width={100}
+              height={32}
+            />
+            <div className="mt-3 text-sm">
+              Your Comfort, Our Mission.
+              <br />
+              Serving the region with pride.
+            </div>
           </div>
           <div>
             <div className="font-bold text-[#003366] mb-2">Quick Links</div>
             <ul className="space-y-1 text-sm">
-              <li><a href="#" className="hover:text-[#005baa]">Home</a></li>
-              <li><a href="#" className="hover:text-[#005baa]">Services</a></li>
-              <li><a href="#" className="hover:text-[#005baa]">Book Now</a></li>
-              <li><a href="#" className="hover:text-[#005baa]">Reviews</a></li>
-              <li><a href="#" className="hover:text-[#005baa]">Contact</a></li>
+              <li>
+                <a
+                  href="#"
+                  className="hover:text-[#005baa]"
+                >
+                  Home
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="hover:text-[#005baa]"
+                >
+                  Services
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="hover:text-[#005baa]"
+                >
+                  Book Now
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="hover:text-[#005baa]"
+                >
+                  Reviews
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="hover:text-[#005baa]"
+                >
+                  Contact
+                </a>
+              </li>
             </ul>
           </div>
           <div>
             <div className="font-bold text-[#003366] mb-2">Contact Us</div>
-            <div className="text-sm">Phone: <a href="tel:+1234567890" className="hover:text-[#d7263d]">(234) 567-890</a></div>
-            <div className="text-sm">Email: <a href="mailto:info@hvacnation.com" className="hover:text-[#d7263d]">info@hvacnation.com</a></div>
-            <div className="text-sm mt-2">Address: 123 Main St, City, State</div>
+            <div className="text-sm">
+              Phone:{" "}
+              <a
+                href="tel:+1234567890"
+                className="hover:text-[#d7263d]"
+              >
+                (234) 567-890
+              </a>
+            </div>
+            <div className="text-sm">
+              Email:{" "}
+              <a
+                href="mailto:info@hvacnation.com"
+                className="hover:text-[#d7263d]"
+              >
+                info@hvacnation.com
+              </a>
+            </div>
+            <div className="text-sm mt-2">
+              Address: 123 Main St, City, State
+            </div>
           </div>
         </div>
-        <div className="text-center text-[#003366] pt-8 text-xs mt-6 border-t border-[#e0e4ea]">&copy; {new Date().getFullYear()} HVAC Nation. All rights reserved.</div>
+        <div className="text-center text-[#003366] pt-8 text-xs mt-6 border-t border-[#e0e4ea]">
+          &copy; {new Date().getFullYear()} HVAC Nation. All rights reserved.
+        </div>
       </footer>
 
       {/* Modals */}
-      <QuoteModal open={quoteOpen} onClose={closeQuote} presetService={presetService} services={quoteServices} />
-      <ReviewModal open={reviewOpen} onClose={closeReview} />
+      <QuoteModal
+        open={quoteOpen}
+        onClose={closeQuote}
+        presetService={presetService}
+        services={quoteServices}
+      />
+      <ReviewModal
+        open={reviewOpen}
+        onClose={closeReview}
+      />
     </div>
   );
 }
