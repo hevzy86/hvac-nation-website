@@ -159,28 +159,28 @@ export default function Home() {
 
       {/* Header (white) */}
       <header className="sticky top-2 z-50 bg-white border-b border-[#e0e4ea] shadow-sm">
-        <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-6">
-          <div className="flex items-center gap-3">
+        <div className="w-full px-0 lg:px-2 h-14 relative grid grid-cols-[auto,1fr,auto] items-center gap-2">
+          <div className="flex items-center gap-2">
             <Image
               src="/next.svg"
               alt="Company Logo"
-              width={120}
+              width={104}
               height={38}
             />
-            <span className="ml-2 text-[#003366] font-bold text-lg tracking-wide">
+            <span className="ml-0.5 text-[#003366] font-bold text-lg tracking-wide">
               HVAC Nation
             </span>
           </div>
 
           {/* primary nav with dropdowns */}
-          <nav className="hidden md:flex items-center gap-2 text-sm text-[#2c3545] relative z-[60]">
+          <nav className="hidden md:flex items-center justify-center justify-self-center gap-1 text-sm text-[#2c3545] relative z-10 whitespace-nowrap">
             {/* Cooling */}
             <div className="relative group">
-              <button className="px-3 py-2 hover:text-[#005baa] font-medium flex items-center gap-1">
+              <button className="px-2 py-1.5 hover:text-[#005baa] font-medium flex items-center gap-1">
                 <span className="underline decoration-[#c9d6e6] underline-offset-4">Cooling</span>
                 <span className="text-xs">▾</span>
               </button>
-              <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition pointer-events-none group-hover:pointer-events-auto absolute left-0 top-full mt-2 w-[320px] bg-white border border-[#e0e4ea] rounded-lg shadow-xl p-3">
+              <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition pointer-events-none group-hover:pointer-events-auto absolute left-0 top-full mt-2 w-[320px] bg-white border border-[#e0e4ea] rounded-lg shadow-xl p-3 z-[70]">
                 <ul className="max-h-[70vh] overflow-auto">
                   {coolingMenu.map((label) => (
                     <li key={label}>
@@ -193,7 +193,7 @@ export default function Home() {
 
             {/* Plumbing */}
             <div className="relative group">
-              <button className="px-3 py-2 hover:text-[#005baa] font-medium flex items-center gap-1">
+              <button className="px-3 py-1.5 hover:text-[#005baa] font-medium flex items-center gap-1">
                 <span className="underline decoration-[#c9d6e6] underline-offset-4">Plumbing</span>
                 <span className="text-xs">▾</span>
               </button>
@@ -210,7 +210,7 @@ export default function Home() {
 
             {/* Drains */}
             <div className="relative group">
-              <button className="px-3 py-2 hover:text-[#005baa] font-medium flex items-center gap-1">
+              <button className="px-3 py-1.5 hover:text-[#005baa] font-medium flex items-center gap-1">
                 <span className="underline decoration-[#c9d6e6] underline-offset-4">Drains</span>
                 <span className="text-xs">▾</span>
               </button>
@@ -227,7 +227,7 @@ export default function Home() {
 
             {/* Heating */}
             <div className="relative group">
-              <button className="px-3 py-2 hover:text-[#005baa] font-medium flex items-center gap-1">
+              <button className="px-3 py-1.5 hover:text-[#005baa] font-medium flex items-center gap-1">
                 <span className="underline decoration-[#c9d6e6] underline-offset-4">Heating</span>
                 <span className="text-xs">▾</span>
               </button>
@@ -243,22 +243,55 @@ export default function Home() {
             </div>
           </nav>
 
-          {/* actions */}
-          <div className="flex items-center gap-2 md:gap-6">
-            <span className="text-[#003366] font-semibold text-sm">4.9 ★</span>
-            <a
-              href="tel:+1234567890"
-              className="text-[#003366] font-semibold text-sm hover:underline"
-            >
-              (234) 567-890
-            </a>
-            <button
-              onClick={() => openQuote()}
-              className="px-4 py-2 rounded-none bg-[#d7263d] text-white font-medium hover:bg-[#c01f32] transition text-sm shadow transform hover:-translate-y-0.5 hover:shadow-lg"
-              style={{ boxShadow: "inset 0 2px 0 rgba(255,255,255,0.35), 0 8px 18px rgba(215, 38, 61, 0.22)" }}
-            >
-              Get My Quote
-            </button>
+          {/* ghost pill to reserve width of the real pill; keeps nav centered and left of pill */}
+          <div className="hidden md:flex items-center justify-self-end mr-3 lg:mr-5" aria-hidden="true">
+            <div className="inline-flex items-center gap-2 whitespace-nowrap px-3 md:px-4 py-1.5 max-w-[600px] invisible">
+              <span className="shrink-0 inline-flex items-center gap-2 px-2 md:px-3 py-1.5 font-semibold">☎ (234) 567-890</span>
+              <span className="shrink-0 inline-flex items-center gap-2 px-2 md:px-3 py-1.5 font-semibold">📅 Schedule Now</span>
+              <span className="hidden xl:inline-flex items-center gap-2 ml-auto">
+                <span>★★★★★</span>
+                <span className="text-xs md:text-sm">6222 Reviews</span>
+              </span>
+            </div>
+            <div className="w-1" />
+          </div>
+
+          {/**
+           * Header CTA Pill — anchored to the right edge of the header
+           *
+           * Positioning (wrapper):
+           *  - размещена в 3-й колонке грида, justify-self-end
+           *    -> правое выравнивание, единая линия с логотипом и навигацией
+           *
+           * Внутренний контейнер (сама «пилюля»):
+           *  - whitespace-nowrap -> запрещает перенос строк внутри
+           *  - max-w-[680px]     -> контролируем «длину» пилюли (под макет)
+           *  - rounded-full / shadow-xl / border / px-3 md:px-4 / py-1.5
+           *    -> форма и визуальный стиль. py-1.5 = «узкая» версия; py-2 = как в Hero
+           *
+           * Элементы внутри:
+           *  - кнопки и блок отзывов: className="shrink-0" -> не сжимаются, не ломают овал
+           *  - reviews: hidden lg:flex + ml-auto -> уезжает вправо и скрывается на < lg
+           *
+           * Responsive:
+           *  - hidden md:flex на wrapper -> показываем пилюлю только с md и выше
+           */}
+          <div className="hidden md:flex absolute right-2 lg:right-4 top-1/2 -translate-y-1/2 z-20">
+            <div className="flex items-center gap-2 whitespace-nowrap bg-white rounded-full w-full max-w-[600px] px-3 md:px-4 py-1.5 shadow-xl border border-[#e0e4ea]" style={{ boxShadow: "0 14px 30px rgba(0,0,0,0.15)" }}>
+              <a href="tel:+1234567890" className="shrink-0 flex items-center gap-2 rounded-full bg-[#d7263d] text-white px-2 md:px-3 py-1.5 font-semibold" style={{ boxShadow: "inset 0 2px 0 rgba(255,255,255,0.35)" }}>
+                <span>☎</span>
+                <span>(234) 567-890</span>
+              </a>
+              <button onClick={() => openQuote()} className="shrink-0 flex items-center gap-2 rounded-full bg-[#005baa] text-white px-2 md:px-3 py-1.5 font-semibold hover:bg-[#004a8d]" style={{ boxShadow: "inset 0 2px 0 rgba(255,255,255,0.35)" }}>
+                <span>📅</span>
+                <span>Schedule Now</span>
+              </button>
+              <div className="hidden xl:flex items-center gap-2 text-[#2c3545] ml-auto shrink-0">
+                <span className="text-[#f59e0b]">★★★★★</span>
+                <span className="text-xs md:text-sm">6222 Reviews</span>
+                <Image src="/globe.svg" alt="reviews" width={18} height={18} />
+              </div>
+            </div>
           </div>
         </div>
 
