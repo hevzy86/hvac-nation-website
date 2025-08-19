@@ -5,6 +5,7 @@ import MapSection from "./components/MapSection";
 import QuoteModal, { type QuoteService } from "./components/QuoteModal";
 import ReviewModal from "./components/ReviewModal";
 import ReviewsCarousel from "./components/ReviewsCarousel";
+import GoogleReviews from "./components/GoogleReviews";
 
 const services = [
   {
@@ -337,6 +338,80 @@ export default function Home() {
             ))}
           </div>
         </div>
+
+        
+      </section>
+
+      {/* Full Reviews (Carousel) below Hero */}
+      <section className="max-w-6xl mx-auto px-4 py-10 md:py-12">
+        {/* Top: primary CTA to leave a review on Google */}
+        <div className="mb-6 flex justify-center">
+          <a
+            href={`https://search.google.com/local/writereview?placeid=${process.env.NEXT_PUBLIC_GOOGLE_PLACE_ID ?? ""}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-6 py-2 rounded-none bg-[#005baa] text-white font-medium transition hover:-translate-y-0.5 hover:shadow-lg"
+            style={{ boxShadow: "inset 0 2px 0 rgba(255,255,255,0.35), 0 8px 18px rgba(0, 91, 170, 0.22)" }}
+          >
+            Leave a Review on Google
+          </a>
+        </div>
+        <ReviewsCarousel items={reviews} />
+        {/* Bottom: trust strip with 'Read More Reviews' */}
+        <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 bg-white border border-[#e0e4ea] rounded-full px-4 py-2 shadow-sm">
+          <div className="flex items-center gap-2 text-[#2c3545] text-sm">
+            <span className="text-[#f59e0b]">★★★★★</span>
+            <span className="font-semibold text-[#003366]">5.0</span>
+            <span>•</span>
+            <span>6,222 Google reviews</span>
+          </div>
+          <a
+            href={`https://www.google.com/maps/place/?q=place_id:${process.env.NEXT_PUBLIC_GOOGLE_PLACE_ID ?? ""}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-1.5 rounded-full bg-[#005baa] text-white text-sm font-medium transition hover:-translate-y-0.5 hover:shadow-md"
+            style={{ boxShadow: "inset 0 1px 0 rgba(255,255,255,0.35), 0 6px 14px rgba(0, 91, 170, 0.22)" }}
+          >
+            Read More Reviews
+          </a>
+        </div>
+      </section>
+
+      {/* Trust Section — compact KPI + Warranty (placed right after Hero) */}
+      <section className="max-w-6xl mx-auto px-4 mt-10 md:mt-12">
+        <div className="relative max-w-5xl mx-auto">
+          {/* KPI pill bar */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 bg-white/70 backdrop-blur-sm border border-[#e0e4ea] rounded-3xl shadow-sm px-6 py-5 md:px-8 md:py-6 sm:divide-x sm:divide-[#e0e4ea]/60">
+            <div className="flex flex-col items-center text-center gap-1.5 py-1.5 sm:px-6">
+              <div className="text-3xl md:text-4xl font-semibold text-[#005baa]">13k+</div>
+              <div className="text-sm leading-tight text-[#2c3545]">
+                <div className="font-semibold text-[#003366]">Happy Clients</div>
+                <div className="text-xs text-[#2c3545]/60">Across the region</div>
+              </div>
+            </div>
+            <div className="flex flex-col items-center text-center gap-1.5 py-1.5 sm:px-6">
+              <div className="text-3xl md:text-4xl font-semibold text-[#005baa]">5.0★</div>
+              <div className="text-sm leading-tight text-[#2c3545]">
+                <div className="font-semibold text-[#003366]">5-Star Reviews</div>
+                <div className="text-xs text-[#2c3545]/60">Thousands of ratings</div>
+              </div>
+            </div>
+            <div className="flex flex-col items-center text-center gap-1.5 py-1.5 sm:px-6">
+              <div className="text-3xl md:text-4xl font-semibold text-[#005baa]">200+</div>
+              <div className="text-sm leading-tight text-[#2c3545]">
+                <div className="font-semibold text-[#003366]">Expert Technicians</div>
+                <div className="text-xs text-[#2c3545]/60">Trusted & certified</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Warranty badge overlapping */}
+          <div className="relative z-10 flex justify-center">
+            <div className="-mt-6 inline-flex items-center gap-2 bg-white border border-[#e0e4ea] rounded-full px-5 py-2 shadow-md">
+              <span className="text-xs font-medium text-[#2c3545]">5-Year Warranty</span>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Map Section (moved up) */}
@@ -424,119 +499,9 @@ export default function Home() {
         </form>
       </section>
 
-      {/* Stats Section */}
-      <section className="bg-[#f5f7fa] max-w-6xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-10 rounded-xl my-8 border border-[#e0e4ea]">
-        <div className="flex flex-col items-center">
-          <span className="text-[#003366] mt-2">Happy Clients</span>
-        </div>
-        <div className="flex flex-col items-center">
-          <span className="text-4xl font-bold text-[#005baa]">13k+</span>
-          <span className="text-[#003366] mt-2">5-Star Reviews</span>
-        </div>
-        <div className="flex flex-col items-center">
-          <span className="text-4xl font-bold text-[#005baa]">200+</span>
-          <span className="text-[#003366] mt-2">Expert Technicians</span>
-        </div>
-      </section>
 
-      {/* Guarantees & Features */}
-      <section className="max-w-6xl mx-auto px-4 py-8 grid md:grid-cols-2 gap-10 items-center bg-white border-b border-[#f5f7fa]">
-        <div className="flex flex-col gap-4">
-          <div className="flex items-center gap-4">
-            <Image
-              src="/icons/cooling.svg"
-              alt="Fast"
-              width={48}
-              height={48}
-            />
-            <div>
-              <div className="text-lg font-bold text-[#003366]">
-                We arrive in minutes, not days.
-              </div>
-              <div className="text-[#222] text-sm">
-                Always a live person, always ready to help, fully stocked
-                trucks.
-              </div>
-            </div>
-          </div>
-          <div className="flex items-center gap-4">
-            <span className="text-3xl">💯</span>
-            <div>
-              <div className="text-lg font-bold text-[#003366]">
-                100% money-back guarantee.
-              </div>
-              <div className="text-[#222] text-sm">
-                If you’re not satisfied — you get your money back.
-              </div>
-            </div>
-          </div>
-          <div className="flex items-center gap-4">
-            <span className="text-3xl">⭐</span>
-            <div>
-              <div className="text-lg font-bold text-[#003366]">
-                Thousands of 5-Star reviews.
-              </div>
-              <div className="text-[#222] text-sm">
-                Professional, careful, and trusted by thousands of homeowners.
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="flex flex-col items-center gap-6">
-          <Image
-            src="/next.svg"
-            alt="Guarantee Badge"
-            width={120}
-            height={38}
-          />
-          <div className="flex flex-col items-center">
-            <span className="text-[#d7263d] text-5xl font-bold">5</span>
-            <span className="text-[#003366] text-lg">Year Warranty</span>
-          </div>
-        </div>
-      </section>
-
-      {/* Features */}
-      <section className="max-w-5xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-8">
-        {features.map((f) => (
-          <div
-            key={f.title}
-            className="bg-white rounded-xl p-7 flex flex-col items-center shadow border border-[#e0e4ea]"
-          >
-            <div className="text-3xl mb-2 text-[#005baa]">{f.icon}</div>
-            <div className="text-xl font-semibold text-[#003366] mb-1">
-              {f.title}
-            </div>
-            <div className="text-[#222] text-center">{f.desc}</div>
-          </div>
-        ))}
-      </section>
-
-      {/* Reviews (Carousel) */}
-      <section className="max-w-5xl mx-auto px-4 py-12">
-        <h2 className="text-2xl font-bold mb-6 text-[#003366] text-center">
-          Homeowners are talking about us daily
-        </h2>
-        <ReviewsCarousel items={reviews} />
-        <div className="mt-8 flex justify-center gap-3">
-          <button
-            onClick={openReview}
-            className="px-6 py-2 rounded-none bg-[#005baa] text-white font-medium transition hover:-translate-y-0.5 hover:shadow-lg"
-            style={{
-              boxShadow:
-                "inset 0 2px 0 rgba(255,255,255,0.35), 0 8px 18px rgba(0, 91, 170, 0.22)",
-            }}
-          >
-            Leave a Review
-          </button>
-          <a
-            href="#"
-            className="px-6 py-2 rounded-none bg-white text-[#005baa] font-medium border border-[#005baa] transition hover:-translate-y-0.5 hover:shadow-lg"
-          >
-            Read more reviews
-          </a>
-        </div>
-      </section>
+      {/* Google approved reviews (moderated) */}
+      <GoogleReviews />
 
       {/* Contact */}
       <section className="max-w-3xl mx-auto px-4 py-10">
