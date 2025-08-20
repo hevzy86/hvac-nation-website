@@ -65,9 +65,9 @@ export default function ServiceAreaMap() {
             center={{ lat: c.lat, lng: c.lng }}
             radius={radiusFor(c.name)}
             options={{
-              fillColor: "#3b82f6",
+              fillColor: "#005baa",
               fillOpacity: 0.25,
-              strokeColor: "#1d4ed8",
+              strokeColor: "#004a8d",
               strokeOpacity: 0.5,
               strokeWeight: 1,
             }}
@@ -91,7 +91,7 @@ export default function ServiceAreaMap() {
           transition: 'background 0.2s',
         }}
       >
-        <div className="font-bold text-lg mb-2 text-[#003366]">Our Service Area</div>
+        <div className="font-bold text-lg mb-2 text-[#005baa]">Our Service Area</div>
         <div className="mb-3 text-sm text-[#222]">Type in your zip code to see if service is offered in your area</div>
         <input type="text" placeholder="ZIP code" className="w-full border border-[#e0e4ea] rounded px-3 py-2 outline-none mb-2" />
         <button

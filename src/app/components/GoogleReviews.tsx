@@ -38,7 +38,7 @@ export default function GoogleReviews() {
 
   return (
     <section className="max-w-5xl mx-auto px-4 py-10">
-      <h3 className="text-xl font-bold mb-4 text-[#003366] flex items-center gap-2">
+      <h3 className="text-xl font-bold mb-4 text-[#005baa] flex items-center gap-2">
         <span>What customers say on Google</span>
         <img src="/globe.svg" alt="google" width={18} height={18} />
       </h3>
@@ -53,11 +53,11 @@ export default function GoogleReviews() {
                 <div className="h-9 w-9 rounded-full bg-[#f5f7fa]" />
               )}
               <div>
-                <div className="font-medium text-[#003366]">{r.author_name}</div>
+                <div className="font-medium text-[#005baa]">{r.author_name}</div>
                 <div className="text-xs text-[#2c3545]/70">{r.relative_time_description}</div>
               </div>
             </div>
-            <div className="text-[#f59e0b] mb-1">{"★".repeat(Math.round(r.rating))}</div>
+            <div className="text-[#005baa] mb-1">{"★".repeat(Math.round(r.rating))}</div>
             <p className="text-sm text-[#2c3545]">{r.text}</p>
             {r.author_url && (
               <a href={r.author_url} target="_blank" rel="noopener noreferrer" className="mt-3 inline-block text-xs text-[#005baa] hover:underline">

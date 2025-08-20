@@ -98,20 +98,20 @@ export default function QuoteModal({
         {/* Scrollable Body */}
         <div className="p-6 grid md:grid-cols-2 gap-6 overflow-y-auto flex-1 overscroll-contain" style={{ WebkitOverflowScrolling: 'touch' }}>
           <div>
-            <div className="font-semibold text-[#003366] mb-3">Select Services</div>
+            <div className="font-semibold text-[#005baa] mb-3">Select Services</div>
             <div className="space-y-2">
               {services.map((s) => {
                 const active = (selected[s.key] || 0) > 0;
                 return (
                   <div key={s.key} className={`flex items-center justify-between border rounded-lg px-3 py-2 ${active ? 'border-[#005baa] bg-[#f5f9ff]' : 'border-[#e0e4ea] bg-white'}`}>
-                    <button onClick={() => toggleService(s.key)} className={`text-left flex-1 font-medium ${active ? 'text-[#003366]' : 'text-[#222]'}`}>
+                    <button onClick={() => toggleService(s.key)} className={`text-left flex-1 font-medium ${active ? 'text-[#005baa]' : 'text-[#222]'}`}>
                       {s.label}
                       <span className="ml-2 text-xs text-[#666]">${s.basePrice}</span>
                     </button>
                     <div className="flex items-center gap-2">
-                      <button onClick={() => changeQty(s.key, -1)} className="w-7 h-7 bg-white border border-[#e0e4ea] text-[#003366] rounded hover:bg-[#f5f7fa]">-</button>
+                      <button onClick={() => changeQty(s.key, -1)} className="w-7 h-7 bg-white border border-[#e0e4ea] text-[#005baa] rounded hover:bg-[#f5f7fa]">-</button>
                       <div className="w-6 text-center text-sm">{selected[s.key] || 0}</div>
-                      <button onClick={() => changeQty(s.key, +1)} className="w-7 h-7 bg-white border border-[#e0e4ea] text-[#003366] rounded hover:bg-[#f5f7fa]">+</button>
+                      <button onClick={() => changeQty(s.key, +1)} className="w-7 h-7 bg-white border border-[#e0e4ea] text-[#005baa] rounded hover:bg-[#f5f7fa]">+</button>
                     </div>
                   </div>
                 );
@@ -120,7 +120,7 @@ export default function QuoteModal({
           </div>
 
           <div>
-            <div className="font-semibold text-[#003366] mb-3">Your Info</div>
+            <div className="font-semibold text-[#005baa] mb-3">Your Info</div>
             <div className="space-y-2">
               <input placeholder="Name" className="w-full p-2 rounded bg-white border border-[#e0e4ea]" />
               <input placeholder="Email" className="w-full p-2 rounded bg-white border border-[#e0e4ea]" />
@@ -128,7 +128,7 @@ export default function QuoteModal({
               <textarea placeholder="Details (optional)" rows={3} className="w-full p-2 rounded bg-white border border-[#e0e4ea]" />
             </div>
             <div className="mt-4 p-3 rounded bg-[#f5f7fa] border border-[#e0e4ea]">
-              <div className="text-sm text-[#003366] font-semibold">Estimated Total</div>
+              <div className="text-sm text-[#005baa] font-semibold">Estimated Total</div>
               <div className="text-3xl font-bold text-[#005baa]">${total.toFixed(0)}</div>
               <div className="text-xs text-[#666] mt-1">Demo estimate. Final pricing may vary after on-site diagnosis.</div>
             </div>

@@ -43,7 +43,7 @@ export default function ReviewsCarousel({
           {visible.map((r, i) => (
             <div key={`${index}-${i}`} className="bg-white rounded-xl p-6 shadow border border-[#e0e4ea]">
               <div className="flex items-center mb-2">
-                <span className="text-lg font-semibold text-[#003366] mr-2">{r.name}</span>
+                <span className="text-lg font-semibold text-[#005baa] mr-2">{r.name}</span>
                 <span className="text-[#005baa]">{"★".repeat(r.rating)}</span>
                 {r.source === "google" && (
                   <span className="ml-auto text-xs text-[#666]">Google</span>

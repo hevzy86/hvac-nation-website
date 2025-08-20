@@ -83,7 +83,7 @@ export default function ReviewModal({ open, onClose }: { open: boolean; onClose:
         </div>
         <form id="review-form" onSubmit={onSubmit} className="p-6 space-y-3 overflow-y-auto flex-1">
           {submitted ? (
-            <div className="p-4 bg-[#f5f9ff] border border-[#e0e4ea] rounded text-[#003366]">
+            <div className="p-4 bg-[#f5f9ff] border border-[#e0e4ea] rounded text-[#005baa]">
               Thank you! Your review was received and awaits approval.
             </div>
           ) : (
@@ -96,7 +96,7 @@ export default function ReviewModal({ open, onClose }: { open: boolean; onClose:
                 required
               />
               <div className="flex items-center gap-3">
-                <label className="text-sm text-[#003366] font-medium">Rating</label>
+                <label className="text-sm text-[#005baa] font-medium">Rating</label>
                 <select
                   value={rating}
                   onChange={(e) => setRating(Number(e.target.value))}
