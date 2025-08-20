@@ -151,23 +151,24 @@ export default function Home() {
   const closeReview = () => setReviewOpen(false);
 
   return (
-    <div className="bg-white min-h-screen text-[#222] font-sans">
+    <div className="min-h-screen text-[#222] font-sans pb-16 md:pb-0 bg-gradient-to-b from-[#f7faff] via-[#f2f7ff] to-[#eaf2ff]">
       {/* Top Bar (2px) — switch to Royal Blue by changing color to #1E73E8 */}
       <div className="sticky top-0 z-50">
-        <div className="h-2 bg-[#1F2937]" />
+        <div className="h-2 bg-[#0B63CE]" />
       </div>
 
       {/* Header (white) */}
       <header className="sticky top-2 z-50 bg-white border-b border-[#e0e4ea] shadow-sm">
         <div className="w-full px-0 lg:px-2 h-14 relative grid grid-cols-[auto,1fr,auto] items-center gap-2">
-          <div className="flex items-center gap-2">
+          <div className="flex h-14 items-center gap-2">
             <Image
               src="/next.svg"
               alt="Company Logo"
               width={104}
-              height={38}
+              height={36}
+              className="block object-contain h-9 w-auto translate-y-[1px]"
             />
-            <span className="ml-0.5 text-[#003366] font-bold text-lg tracking-wide">
+            <span className="ml-0.5 text-[#003366] font-bold text-lg tracking-wide leading-none translate-y-[1px]">
               HVAC Nation
             </span>
           </div>
@@ -177,8 +178,8 @@ export default function Home() {
             {/* Cooling */}
             <div className="relative group">
               <button className="px-2 py-1.5 hover:text-[#005baa] font-medium flex items-center gap-1">
-                <span className="underline decoration-[#c9d6e6] underline-offset-4">Cooling</span>
-                <span className="text-xs">▾</span>
+                <span>Cooling</span>
+                <span className="text-[#9aa6b2]">▾</span>
               </button>
               <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition pointer-events-none group-hover:pointer-events-auto absolute left-0 top-full mt-2 w-[320px] bg-white border border-[#e0e4ea] rounded-lg shadow-xl p-3 z-[70]">
                 <ul className="max-h-[70vh] overflow-auto">
@@ -193,9 +194,9 @@ export default function Home() {
 
             {/* Plumbing */}
             <div className="relative group">
-              <button className="px-3 py-1.5 hover:text-[#005baa] font-medium flex items-center gap-1">
-                <span className="underline decoration-[#c9d6e6] underline-offset-4">Plumbing</span>
-                <span className="text-xs">▾</span>
+              <button className="px-2 py-1.5 hover:text-[#005baa] font-medium flex items-center gap-1">
+                <span>Plumbing</span>
+                <span className="text-[#9aa6b2]">▾</span>
               </button>
               <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition pointer-events-none group-hover:pointer-events-auto absolute left-0 top-full mt-2 w-[320px] bg-white border border-[#e0e4ea] rounded-lg shadow-xl p-3">
                 <ul className="max-h-[70vh] overflow-auto">
@@ -210,9 +211,9 @@ export default function Home() {
 
             {/* Drains */}
             <div className="relative group">
-              <button className="px-3 py-1.5 hover:text-[#005baa] font-medium flex items-center gap-1">
-                <span className="underline decoration-[#c9d6e6] underline-offset-4">Drains</span>
-                <span className="text-xs">▾</span>
+              <button className="px-2 py-1.5 hover:text-[#005baa] font-medium flex items-center gap-1">
+                <span>Drains</span>
+                <span className="text-[#9aa6b2]">▾</span>
               </button>
               <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition pointer-events-none group-hover:pointer-events-auto absolute left-0 top-full mt-2 w-[320px] bg-white border border-[#e0e4ea] rounded-lg shadow-xl p-3">
                 <ul className="max-h-[70vh] overflow-auto">
@@ -227,9 +228,9 @@ export default function Home() {
 
             {/* Heating */}
             <div className="relative group">
-              <button className="px-3 py-1.5 hover:text-[#005baa] font-medium flex items-center gap-1">
-                <span className="underline decoration-[#c9d6e6] underline-offset-4">Heating</span>
-                <span className="text-xs">▾</span>
+              <button className="px-2 py-1.5 hover:text-[#005baa] font-medium flex items-center gap-1">
+                <span>Heating</span>
+                <span className="text-[#9aa6b2]">▾</span>
               </button>
               <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition pointer-events-none group-hover:pointer-events-auto absolute left-0 top-full mt-2 w-[320px] bg-white border border-[#e0e4ea] rounded-lg shadow-xl p-3">
                 <ul className="max-h-[70vh] overflow-auto">
@@ -244,7 +245,7 @@ export default function Home() {
           </nav>
 
           {/* ghost pill to reserve width of the real pill; keeps nav centered and left of pill */}
-          <div className="hidden md:flex items-center justify-self-end mr-3 lg:mr-5" aria-hidden="true">
+          <div className="hidden md:flex items-center justify-self-end mr-0 lg:mr-0" aria-hidden="true">
             <div className="inline-flex items-center gap-2 whitespace-nowrap px-3 md:px-4 py-1.5 max-w-[600px] invisible">
               <span className="shrink-0 inline-flex items-center gap-2 px-2 md:px-3 py-1.5 font-semibold">☎ (234) 567-890</span>
               <span className="shrink-0 inline-flex items-center gap-2 px-2 md:px-3 py-1.5 font-semibold">📅 Schedule Now</span>
@@ -295,9 +296,9 @@ export default function Home() {
           </div>
         </div>
 
-        {/* secondary nav */}
-        <div className="hidden md:block bg-white">
-          <div className="max-w-6xl mx-auto px-4 pb-3 flex items-center gap-6 text-sm text-[#2c3545]">
+        {/* secondary nav — compact utility bar (right-aligned) */}
+        <div className="hidden md:flex bg-white h-9 items-center justify-end gap-6 text-sm text-[#2c3545]/80 px-2 lg:px-4">
+          <div className="max-w-6xl ml-auto px-4 flex items-center gap-6 text-sm text-[#2c3545]">
             <a href="#" className="hover:text-[#005baa] underline decoration-transparent hover:decoration-[#0B63CE] decoration-2 underline-offset-8">Make‑A‑Wish®</a>
             <a href="#" className="hover:text-[#005baa] underline decoration-transparent hover:decoration-[#0B63CE] decoration-2 underline-offset-8">All Offers</a>
             <a href="#" className="hover:text-[#005baa] underline decoration-transparent hover:decoration-[#0B63CE] decoration-2 underline-offset-8">Contact Us</a>
@@ -375,8 +376,76 @@ export default function Home() {
         
       </section>
 
+      {/* Trust KPIs under Hero — large numbers with line icons */}
+      <section className="w-full bg-[#f3f7fc] border-y border-[#e6edf7] py-8 md:py-10 -mt-1 md:-mt-2 mb-6">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
+            {/* KPI: Clients served */}
+            <div className="flex items-start gap-4">
+              <div className="shrink-0 text-[#0b64c0]" aria-hidden>
+                {/* Thumb up line icon */}
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M14 9V5a3 3 0 0 0-3-3l-1 5-3 4v10h10a3 3 0 0 0 3-3v-6a3 3 0 0 0-3-3h-3z"/>
+                  <path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/>
+                </svg>
+              </div>
+              <div>
+                <div className="text-2xl md:text-3xl font-extrabold tracking-tight text-[#0b0f1a]">200k+</div>
+                <div className="text-sm md:text-base text-[#4a5568]">clients served</div>
+              </div>
+            </div>
+
+            {/* KPI: Client reviews */}
+            <div className="flex items-start gap-4">
+              <div className="shrink-0 text-[#0b64c0]" aria-hidden>
+                {/* Review card line icon */}
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="4" width="18" height="14" rx="2"/>
+                  <path d="M7 9h6"/>
+                  <path d="M7 13h10"/>
+                  <path d="M10 19l2-3"/>
+                </svg>
+              </div>
+              <div>
+                <div className="text-2xl md:text-3xl font-extrabold tracking-tight text-[#0b0f1a]">13k+</div>
+                <div className="text-sm md:text-base text-[#4a5568]">client reviews</div>
+              </div>
+            </div>
+
+            {/* KPI: Same‑day service */}
+            <div className="flex items-start gap-4">
+              <div className="shrink-0 text-[#0b64c0]" aria-hidden>
+                {/* Bolt line icon */}
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/>
+                </svg>
+              </div>
+              <div>
+                <div className="text-2xl md:text-3xl font-extrabold tracking-tight text-[#0b0f1a]">24/7</div>
+                <div className="text-sm md:text-base text-[#4a5568]">same‑day service</div>
+              </div>
+            </div>
+
+            {/* KPI: Technicians */}
+            <div className="flex items-start gap-4">
+              <div className="shrink-0 text-[#0b64c0]" aria-hidden>
+                {/* Shield/check line icon */}
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 2l7 3v6c0 5-3.5 9-7 11-3.5-2-7-6-7-11V5l7-3z"/>
+                  <path d="M9.5 12l2 2 3.5-3.5"/>
+                </svg>
+              </div>
+              <div>
+                <div className="text-2xl md:text-3xl font-extrabold tracking-tight text-[#0b0f1a]">100%</div>
+                <div className="text-sm md:text-base text-[#4a5568]">licensed & insured</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Full Reviews (Carousel) below Hero */}
-      <section className="max-w-6xl mx-auto px-4 py-10 md:py-12">
+      <section className="max-w-6xl mx-auto px-4 py-10 md:py-12 bg-[#eef5ff] rounded-2xl">
         {/* Top: primary CTA to leave a review on Google */}
         <div className="mb-6 flex justify-center">
           <a
@@ -453,7 +522,7 @@ export default function Home() {
       {/* Booking Section */}
       <section
         id="book"
-        className="max-w-3xl mx-auto px-4 py-12"
+        className="max-w-3xl mx-auto px-4 py-12 bg-[#eef5ff] rounded-2xl"
       >
         <h2 className="text-2xl font-bold mb-6 text-[#003366]">
           Book a Service
@@ -535,38 +604,6 @@ export default function Home() {
 
       {/* Google approved reviews (moderated) */}
       <GoogleReviews />
-
-      {/* Contact */}
-      <section className="max-w-3xl mx-auto px-4 py-10">
-        <h2 className="text-2xl font-bold mb-6 text-[#003366]">Contact Us</h2>
-        <form className="bg-[#f5f7fa] rounded-xl p-8 flex flex-col gap-4 shadow border border-[#e0e4ea]">
-          <input
-            type="text"
-            placeholder="Your Name"
-            className="p-3 rounded bg-white text-[#222] placeholder-gray-400 outline-none border border-[#e0e4ea]"
-          />
-          <input
-            type="email"
-            placeholder="Your Email"
-            className="p-3 rounded bg-white text-[#222] placeholder-gray-400 outline-none border border-[#e0e4ea]"
-          />
-          <textarea
-            placeholder="How can we help you?"
-            className="p-3 rounded bg-white text-[#222] placeholder-gray-400 outline-none border border-[#e0e4ea]"
-            rows={4}
-          ></textarea>
-          <button
-            type="submit"
-            className="px-6 py-2 rounded-none bg-[#005baa] text-white font-semibold transition hover:-translate-y-0.5 hover:shadow-lg"
-            style={{
-              boxShadow:
-                "inset 0 2px 0 rgba(255,255,255,0.35), 0 8px 18px rgba(0, 91, 170, 0.22)",
-            }}
-          >
-            Send Message
-          </button>
-        </form>
-      </section>
 
       {/* Extended Footer (moved to very bottom) */}
       <footer className="bg-[#f5f7fa] text-[#003366] py-10 mt-10 border-t-4 border-[#005baa]">
@@ -658,6 +695,22 @@ export default function Home() {
           &copy; {new Date().getFullYear()} HVAC Nation. All rights reserved.
         </div>
       </footer>
+
+      {/* Sticky Mobile CTA (Call + Schedule) */}
+      <div className="fixed md:hidden bottom-0 inset-x-0 z-[60]">
+        <div className="mx-auto max-w-3xl px-3 pb-[env(safe-area-inset-bottom)]">
+          <div className="m-3 grid grid-cols-2 gap-3 rounded-full bg-white border border-[#e0e4ea] shadow-xl" style={{ boxShadow: "0 16px 30px rgba(0,0,0,0.18)" }}>
+            <a href="tel:+1234567890" className="flex items-center justify-center gap-2 rounded-full bg-[#d7263d] text-white py-3 font-semibold" style={{ boxShadow: "inset 0 2px 0 rgba(255,255,255,0.35)" }}>
+              <span>☎</span>
+              <span>Call</span>
+            </a>
+            <button onClick={() => openQuote()} className="flex items-center justify-center gap-2 rounded-full bg-[#005baa] text-white py-3 font-semibold hover:bg-[#004a8d]" style={{ boxShadow: "inset 0 2px 0 rgba(255,255,255,0.35)" }}>
+              <span>📅</span>
+              <span>Schedule</span>
+            </button>
+          </div>
+        </div>
+      </div>
 
       {/* Modals */}
       <QuoteModal

@@ -1,0 +1,26 @@
+{
+    "projectColors.mainColor": "#24cca2",
+    "window.title": "HVAC Nation Project",
+    "workbench.colorCustomizations": {
+        "editorBracketHighlight.foreground1": "#ffee00",
+        "statusBarItem.warningBackground": "#24cca2",
+        "statusBarItem.warningForeground": "#000000",
+        "statusBarItem.warningHoverBackground": "#24cca2",
+        "statusBarItem.warningHoverForeground": "#00000090",
+        "statusBarItem.remoteBackground": "#24cca2",
+        "statusBarItem.remoteForeground": "#000000",
+        "statusBarItem.remoteHoverBackground": "#24cca2",
+        "statusBarItem.remoteHoverForeground": "#00000090",
+        "titleBar.activeBackground": "#24cca2",
+        "titleBar.activeForeground": "#000000",
+        "titleBar.inactiveBackground": "#24cca2",
+        "titleBar.inactiveForeground": "#00000090"
+    },
+    "projectColors.name": "HVAC Nation Project",
+    "projectColors.isActivityBarColored": false,
+    "projectColors.isTitleBarColored": true,
+    "projectColors.isStatusBarColored": false,
+    "projectColors.isProjectNameColored": true,
+    "projectColors.isActiveItemsColored": false,
+    "projectColors.setWindowTitle": true
+}
