@@ -137,6 +137,8 @@ export default function Home() {
   const [quoteOpen, setQuoteOpen] = useState(false);
   const [presetService, setPresetService] = useState<string | null>(null);
   const [reviewOpen, setReviewOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [openSection, setOpenSection] = useState<string | null>(null);
 
   const quoteServices: QuoteService[] = services.map((s) => ({
     key: s.key,
@@ -211,6 +213,22 @@ export default function Home() {
 
       {/* Header (white) */}
       <header className="sticky top-2 z-50 bg-white border-b border-[#e0e4ea] shadow-sm">
+        {/* Mobile hamburger button anchored to header corner */}
+        <div className="md:hidden absolute right-2 top-1.5 z-30">
+          <button
+            type="button"
+            aria-label="Toggle menu"
+            aria-expanded={mobileOpen}
+            onClick={() => setMobileOpen((v) => !v)}
+            className="inline-flex items-center justify-center h-10 w-10 rounded-xl border border-[#004a8d] bg-[#005baa] text-white shadow-md active:scale-95 transition-transform hover:bg-[#004a8d]"
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          </button>
+        </div>
         <div className="w-full px-0 lg:px-2 h-14 relative grid grid-cols-[auto,1fr,auto] items-center gap-2">
           <div className="flex h-14 items-center gap-2">
             <Image
@@ -224,6 +242,7 @@ export default function Home() {
               HVAC Nation
             </span>
           </div>
+
 
           {/* primary nav with dropdowns (hidden here; moved to utility bar below) */}
           <nav className="hidden md:hidden items-center justify-center justify-self-center gap-1 text-sm text-[#2c3545] relative z-10 whitespace-nowrap">
@@ -387,6 +406,119 @@ export default function Home() {
                   height={18}
                 />
               </div>
+            </div>
+          </div>
+        </div>
+        {/* Mobile menu panel */}
+        <div className={`md:hidden border-t border-[#e0e4ea] bg-white ${mobileOpen ? "block" : "hidden"}`}>
+          <div className="px-4 py-3">
+            {/* Utility quick actions */}
+            <div className="flex gap-2 mb-3">
+              <a
+                href="tel:+1234567890"
+                className="flex-1 flex items-center justify-center gap-2 rounded-full bg-[#d7263d] text-white px-3 py-2 font-semibold"
+              >
+                <span>☎</span>
+                <span>(234) 567-890</span>
+              </a>
+              <button
+                onClick={() => openQuote()}
+                className="flex-1 flex items-center justify-center gap-2 rounded-full bg-[#005baa] text-white px-3 py-2 font-semibold"
+              >
+                <span>📅</span>
+                <span>Schedule</span>
+              </button>
+            </div>
+
+            {/* Accordion sections */}
+            <div className="divide-y divide-[#e0e4ea]">
+              {/* Cooling */}
+              <div>
+                <button
+                  className="w-full flex items-center justify-between py-3 font-semibold text-[#2c3545]"
+                  onClick={() => setOpenSection(openSection === "cooling" ? null : "cooling")}
+                >
+                  <span>Cooling</span>
+                  <span className="text-[#9aa6b2]">{openSection === "cooling" ? "▴" : "▾"}</span>
+                </button>
+                {openSection === "cooling" && (
+                  <ul className="pb-3 pl-2 space-y-1 text-[#2c3545]">
+                    {coolingMenu.map((label) => (
+                      <li key={label}>
+                        <a href="#" className="block px-2 py-2 rounded hover:bg-[#f5f7fa] text-sm">{label}</a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+
+              {/* Plumbing */}
+              <div>
+                <button
+                  className="w-full flex items-center justify-between py-3 font-semibold text-[#2c3545]"
+                  onClick={() => setOpenSection(openSection === "plumbing" ? null : "plumbing")}
+                >
+                  <span>Plumbing</span>
+                  <span className="text-[#9aa6b2]">{openSection === "plumbing" ? "▴" : "▾"}</span>
+                </button>
+                {openSection === "plumbing" && (
+                  <ul className="pb-3 pl-2 space-y-1 text-[#2c3545]">
+                    {plumbingMenu.map((label) => (
+                      <li key={label}>
+                        <a href="#" className="block px-2 py-2 rounded hover:bg-[#f5f7fa] text-sm">{label}</a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+
+              {/* Drains */}
+              <div>
+                <button
+                  className="w-full flex items-center justify-between py-3 font-semibold text-[#2c3545]"
+                  onClick={() => setOpenSection(openSection === "drains" ? null : "drains")}
+                >
+                  <span>Drains</span>
+                  <span className="text-[#9aa6b2]">{openSection === "drains" ? "▴" : "▾"}</span>
+                </button>
+                {openSection === "drains" && (
+                  <ul className="pb-3 pl-2 space-y-1 text-[#2c3545]">
+                    {drainsMenu.map((label) => (
+                      <li key={label}>
+                        <a href="#" className="block px-2 py-2 rounded hover:bg-[#f5f7fa] text-sm">{label}</a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+
+              {/* Heating */}
+              <div>
+                <button
+                  className="w-full flex items-center justify-between py-3 font-semibold text-[#2c3545]"
+                  onClick={() => setOpenSection(openSection === "heating" ? null : "heating")}
+                >
+                  <span>Heating</span>
+                  <span className="text-[#9aa6b2]">{openSection === "heating" ? "▴" : "▾"}</span>
+                </button>
+                {openSection === "heating" && (
+                  <ul className="pb-3 pl-2 space-y-1 text-[#2c3545]">
+                    {heatingMenu.map((label) => (
+                      <li key={label}>
+                        <a href="#" className="block px-2 py-2 rounded hover:bg-[#f5f7fa] text-sm">{label}</a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+
+            {/* Utility links */}
+            <div className="mt-3 grid grid-cols-2 gap-3 text-sm text-[#2c3545]">
+              <a href="#" className="underline decoration-transparent hover:decoration-[#005baa] underline-offset-4">Make‑A‑Wish®</a>
+              <a href="#" className="underline decoration-transparent hover:decoration-[#005baa] underline-offset-4 text-right">All Offers</a>
+              <a href="#" className="underline decoration-transparent hover:decoration-[#005baa] underline-offset-4">Contact Us</a>
+              <a href="#" className="underline decoration-transparent hover:decoration-[#005baa] underline-offset-4 text-right">About Us</a>
             </div>
           </div>
         </div>
