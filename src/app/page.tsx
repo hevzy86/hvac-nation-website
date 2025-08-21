@@ -662,8 +662,8 @@ export default function Home() {
             </a>
             <button
               onClick={() => openQuote()}
-              className="flex items-center gap-2 rounded-full bg-[#005baa] text-white px-3 md:px-4 py-2 font-semibold hover:bg-[#004a8d]"
-              style={{ boxShadow: "inset 0 2px 0 rgba(255,255,255,0.35)" }}
+              className="flex items-center gap-2 rounded-full bg-white text-[#005baa] border border-[#005baa] px-3 md:px-4 py-2 font-semibold hover:bg-[#f5f7fa]"
+              style={{ boxShadow: "0 2px 0 rgba(0,0,0,0.04)" }}
             >
               <span>📅</span>
               <span>Schedule Now</span>
@@ -1268,11 +1268,11 @@ export default function Home() {
             </a>
             <button
               onClick={() => openQuote()}
-              className="flex items-center justify-center gap-2 rounded-full bg-[#005baa] text-white py-3 font-semibold hover:bg-[#004a8d]"
-              style={{ boxShadow: "inset 0 2px 0 rgba(255,255,255,0.35)" }}
+              className="flex items-center justify-center gap-2 rounded-full bg-white text-[#005baa] border border-[#005baa] py-3 font-semibold hover:bg-[#f5f7fa]"
+              style={{ boxShadow: "0 2px 0 rgba(0,0,0,0.04)" }}
             >
               <span>📅</span>
-              <span>Schedule</span>
+              <span>Schedule Now</span>
             </button>
           </div>
         </div>
