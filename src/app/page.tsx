@@ -225,11 +225,11 @@ export default function Home() {
             </span>
           </div>
 
-          {/* primary nav with dropdowns */}
-          <nav className="hidden md:flex items-center justify-center justify-self-center gap-1 text-sm text-[#2c3545] relative z-10 whitespace-nowrap">
+          {/* primary nav with dropdowns (hidden here; moved to utility bar below) */}
+          <nav className="hidden md:hidden items-center justify-center justify-self-center gap-1 text-sm text-[#2c3545] relative z-10 whitespace-nowrap">
             {/* Cooling */}
             <div className="relative group">
-              <button className="px-2 py-1.5 hover:text-[#005baa] font-medium flex items-center gap-1">
+              <button className="relative px-3 py-2 font-bold uppercase tracking-wide flex items-center gap-1 hover:text-[#2c3545] after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-[#d7263d] after:rounded-full after:w-0 group-hover:after:w-full hover:after:w-full after:transition-all after:duration-200">
                 <span>Cooling</span>
                 <span className="text-[#9aa6b2]">▾</span>
               </button>
@@ -251,7 +251,7 @@ export default function Home() {
 
             {/* Plumbing */}
             <div className="relative group">
-              <button className="px-2 py-1.5 hover:text-[#005baa] font-medium flex items-center gap-1">
+              <button className="relative px-3 py-2 font-bold uppercase tracking-wide flex items-center gap-1 hover:text-[#2c3545] after:absolute after:left-1/2 after:-translate-x-1/2 after:-bottom-[6px] after:h-[3px] after:bg-[#d7263d] after:rounded-full after:w-0 hover:after:w-10 after:transition-all after:duration-200">
                 <span>Plumbing</span>
                 <span className="text-[#9aa6b2]">▾</span>
               </button>
@@ -273,7 +273,7 @@ export default function Home() {
 
             {/* Drains */}
             <div className="relative group">
-              <button className="px-2 py-1.5 hover:text-[#005baa] font-medium flex items-center gap-1">
+              <button className="relative px-3 py-2 font-bold uppercase tracking-wide flex items-center gap-1 hover:text-[#2c3545] after:absolute after:left-1/2 after:-translate-x-1/2 after:-bottom-[6px] after:h-[3px] after:bg-[#d7263d] after:rounded-full after:w-0 hover:after:w-10 after:transition-all after:duration-200">
                 <span>Drains</span>
                 <span className="text-[#9aa6b2]">▾</span>
               </button>
@@ -295,7 +295,7 @@ export default function Home() {
 
             {/* Heating */}
             <div className="relative group">
-              <button className="px-2 py-1.5 hover:text-[#005baa] font-medium flex items-center gap-1">
+              <button className="relative px-3 py-2 font-bold uppercase tracking-wide flex items-center gap-1 hover:text-[#2c3545] after:absolute after:left-1/2 after:-translate-x-1/2 after:-bottom-[6px] after:h-[3px] after:bg-[#d7263d] after:rounded-full after:w-0 hover:after:w-10 after:transition-all after:duration-200">
                 <span>Heating</span>
                 <span className="text-[#9aa6b2]">▾</span>
               </button>
@@ -391,33 +391,87 @@ export default function Home() {
           </div>
         </div>
 
-        {/* secondary nav — compact utility bar (right-aligned) */}
-        <div className="hidden md:flex bg-white h-9 items-center justify-end gap-6 text-sm text-[#2c3545]/80 px-2 lg:px-4">
-          <div className="max-w-6xl ml-auto px-4 flex items-center gap-6 text-sm text-[#2c3545]">
-            <a
-              href="#"
-              className="hover:text-[#005baa] underline decoration-transparent hover:decoration-[#005baa] decoration-2 underline-offset-8"
-            >
-              Make‑A‑Wish®
-            </a>
-            <a
-              href="#"
-              className="hover:text-[#005baa] underline decoration-transparent hover:decoration-[#005baa] decoration-2 underline-offset-8"
-            >
-              All Offers
-            </a>
-            <a
-              href="#"
-              className="hover:text-[#005baa] underline decoration-transparent hover:decoration-[#005baa] decoration-2 underline-offset-8"
-            >
-              Contact Us
-            </a>
-            <a
-              href="#"
-              className="hover:text-[#005baa] underline decoration-transparent hover:decoration-[#005baa] decoration-2 underline-offset-8"
-            >
-              About Us
-            </a>
+        {/* secondary nav — primary categories on left, utility links on right */}
+        <div className="hidden md:flex bg-white h-10 items-center border-b border-[#e0e4ea]">
+          <div className="max-w-6xl mx-auto w-full px-4 flex items-stretch justify-between">
+            {/* Primary categories inline */}
+            <nav className="relative z-20 flex items-center gap-6 text-sm text-[#2c3545]">
+              {/* Cooling */}
+              <div className="relative group">
+                <button className="relative px-1.5 py-2 font-bold uppercase tracking-wide flex items-center gap-1 after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-[#d7263d] after:rounded-full after:w-0 group-hover:after:w-full hover:after:w-full after:transition-all after:duration-200">
+                  <span>Cooling</span>
+                  <span className="text-[#9aa6b2]">▾</span>
+                </button>
+                <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition pointer-events-none group-hover:pointer-events-auto absolute left-0 top-full mt-2 w-[320px] bg-white border border-[#e0e4ea] rounded-lg shadow-xl p-3">
+                  <ul className="max-h-[70vh] overflow-auto">
+                    {coolingMenu.map((label) => (
+                      <li key={label}>
+                        <a href="#" className="block px-3 py-2 rounded hover:bg-[#f5f7fa] text-[#2c3545]">{label}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              {/* Plumbing */}
+              <div className="relative group">
+                <button className="relative px-1.5 py-2 font-bold uppercase tracking-wide flex items-center gap-1 after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-[#d7263d] after:rounded-full after:w-0 group-hover:after:w-full hover:after:w-full after:transition-all after:duration-200">
+                  <span>Plumbing</span>
+                  <span className="text-[#9aa6b2]">▾</span>
+                </button>
+                <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition pointer-events-none group-hover:pointer-events-auto absolute left-0 top-full mt-2 w-[320px] bg-white border border-[#e0e4ea] rounded-lg shadow-xl p-3">
+                  <ul className="max-h-[70vh] overflow-auto">
+                    {plumbingMenu.map((label) => (
+                      <li key={label}>
+                        <a href="#" className="block px-3 py-2 rounded hover:bg-[#f5f7fa] text-[#2c3545]">{label}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              {/* Drains */}
+              <div className="relative group">
+                <button className="relative px-1.5 py-2 font-bold uppercase tracking-wide flex items-center gap-1 after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-[#d7263d] after:rounded-full after:w-0 group-hover:after:w-full hover:after:w-full after:transition-all after:duration-200">
+                  <span>Drains</span>
+                  <span className="text-[#9aa6b2]">▾</span>
+                </button>
+                <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition pointer-events-none group-hover:pointer-events-auto absolute left-0 top-full mt-2 w-[320px] bg-white border border-[#e0e4ea] rounded-lg shadow-xl p-3">
+                  <ul className="max-h-[70vh] overflow-auto">
+                    {drainsMenu.map((label) => (
+                      <li key={label}>
+                        <a href="#" className="block px-3 py-2 rounded hover:bg-[#f5f7fa] text-[#2c3545]">{label}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              {/* Heating */}
+              <div className="relative group">
+                <button className="relative px-1.5 py-2 font-bold uppercase tracking-wide flex items-center gap-1 after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-[#d7263d] after:rounded-full after:w-0 group-hover:after:w-full hover:after:w-full after:transition-all after:duration-200">
+                  <span>Heating</span>
+                  <span className="text-[#9aa6b2]">▾</span>
+                </button>
+                <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition pointer-events-none group-hover:pointer-events-auto absolute left-0 top-full mt-2 w-[320px] bg-white border border-[#e0e4ea] rounded-lg shadow-xl p-3">
+                  <ul className="max-h-[70vh] overflow-auto">
+                    {heatingMenu.map((label) => (
+                      <li key={label}>
+                        <a href="#" className="block px-3 py-2 rounded hover:bg-[#f5f7fa] text-[#2c3545]">{label}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </nav>
+
+            {/* Utility links on the right */}
+            <div className="flex items-center gap-6 text-sm text-[#2c3545]">
+              <a href="#" className="hover:text-[#005baa] underline decoration-transparent hover:decoration-[#005baa] decoration-2 underline-offset-8">Make‑A‑Wish®</a>
+              <a href="#" className="hover:text-[#005baa] underline decoration-transparent hover:decoration-[#005baa] decoration-2 underline-offset-8">All Offers</a>
+              <a href="#" className="hover:text-[#005baa] underline decoration-transparent hover:decoration-[#005baa] decoration-2 underline-offset-8">Contact Us</a>
+              <a href="#" className="hover:text-[#005baa] underline decoration-transparent hover:decoration-[#005baa] decoration-2 underline-offset-8">About Us</a>
+            </div>
           </div>
         </div>
       </header>
@@ -587,7 +641,7 @@ export default function Home() {
               />
             </div>
             {/* soft left fade into light background */}
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#ececec] to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#f5f5f5] to-transparent" />
           </div>
         </div>
         <div className="relative max-w-6xl mx-auto px-4 md:px-6 py-6 md:py-8 overflow-hidden">
@@ -595,8 +649,8 @@ export default function Home() {
           We arrive in minutes, not days.
         </h2>
         <div className="mt-4 grid md:grid-cols-2 gap-6 md:gap-8 items-start relative z-10">
-          {/* Guarantees list */}
-          <ul className="space-y-3 bg-white border border-[#cfe2ff] rounded-2xl p-5 shadow-md">
+          {/* Guarantees list (no card, text directly on background) */}
+          <ul className="space-y-4 bg-transparent p-0 shadow-none ring-0 max-w-none">
             {[
               "Happy Money Promise Guarantee",
               "Better Than We Found It Guarantee",
@@ -606,16 +660,28 @@ export default function Home() {
               "No Change Order Guarantee",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3 text-[#005baa]">
-                <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-[#eaf3ff] to-[#d8eaff] border border-[#bcd8ff] shadow-sm">
+                <span className="mt-0.5 inline-flex h-8 w-8 items-center justify-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    width="16"
-                    height="16"
-                    className="text-[#005baa]"
-                    fill="none"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
                   >
-                    <path d="M5 10.5l3 3 7-8" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                    {/* filled red shield */}
+                    <path
+                      d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+                      fill="#d7263d"
+                    />
+                    {/* white check */}
+                    <path
+                      d="m9 12 2 2 4-4"
+                      fill="none"
+                      stroke="#ffffff"
+                      strokeWidth="2.2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
                   </svg>
                 </span>
                 <span className="text-sm md:text-base font-medium">{item}</span>
@@ -767,6 +833,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Map Section — moved before Reviews */}
+      <MapSection />
+
       {/* Full Reviews (Carousel) below Hero */}
       <section className="max-w-6xl mx-auto px-4 py-10 md:py-12 bg-[#005baa] rounded-2xl">
         {/* Top: primary CTA to leave a review on Google */}
@@ -869,18 +938,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Map Section (moved up) */}
-      <MapSection />
-
       {/* Booking Section */}
       <section
         id="book"
-        className="max-w-3xl mx-auto px-4 py-12 bg-[#eef5ff] rounded-2xl"
+        className="max-w-3xl mx-auto px-4 py-12 bg-[#005baa] rounded-2xl"
       >
-        <h2 className="text-2xl font-bold mb-6 text-[#005baa]">
+        <h2 className="text-2xl font-bold mb-6 text-white text-center">
           Book a Service
         </h2>
-        <form className="bg-[#f5f7fa] rounded-xl p-8 flex flex-col gap-4 shadow border border-[#e0e4ea]">
+        <form className="bg-[#005baa] rounded-xl p-8 flex flex-col gap-4 shadow text-white">
           <div className="grid md:grid-cols-2 gap-4">
             <input
               type="text"
@@ -958,7 +1024,7 @@ export default function Home() {
       <GoogleReviews />
 
       {/* Extended Footer (moved to very bottom) */}
-      <footer className="bg-[#f5f7fa] text-[#005baa] py-10 mt-10 border-t-4 border-[#005baa]">
+      <footer className="bg-[#005baa] text-white py-10 mt-10 border-t-4 border-[#004a8d]">
         <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-8">
           <div>
             <Image
@@ -974,12 +1040,12 @@ export default function Home() {
             </div>
           </div>
           <div>
-            <div className="font-bold text-[#005baa] mb-2">Quick Links</div>
+            <div className="font-bold text-white mb-2">Quick Links</div>
             <ul className="space-y-1 text-sm">
               <li>
                 <a
                   href="#"
-                  className="hover:text-[#005baa]"
+                  className="hover:text-white/90"
                 >
                   Home
                 </a>
@@ -987,7 +1053,7 @@ export default function Home() {
               <li>
                 <a
                   href="#"
-                  className="hover:text-[#005baa]"
+                  className="hover:text-white/90"
                 >
                   Services
                 </a>
@@ -995,7 +1061,7 @@ export default function Home() {
               <li>
                 <a
                   href="#"
-                  className="hover:text-[#005baa]"
+                  className="hover:text-white/90"
                 >
                   Book Now
                 </a>
@@ -1003,7 +1069,7 @@ export default function Home() {
               <li>
                 <a
                   href="#"
-                  className="hover:text-[#005baa]"
+                  className="hover:text-white/90"
                 >
                   Reviews
                 </a>
@@ -1011,7 +1077,7 @@ export default function Home() {
               <li>
                 <a
                   href="#"
-                  className="hover:text-[#005baa]"
+                  className="hover:text-white/90"
                 >
                   Contact
                 </a>
@@ -1019,12 +1085,12 @@ export default function Home() {
             </ul>
           </div>
           <div>
-            <div className="font-bold text-[#005baa] mb-2">Contact Us</div>
+            <div className="font-bold text-white mb-2">Contact Us</div>
             <div className="text-sm">
               Phone:{" "}
               <a
                 href="tel:+1234567890"
-                className="hover:text-[#d7263d]"
+                className="hover:text-[#ffd1d8]"
               >
                 (234) 567-890
               </a>
@@ -1033,7 +1099,7 @@ export default function Home() {
               Email:{" "}
               <a
                 href="mailto:info@hvacnation.com"
-                className="hover:text-[#d7263d]"
+                className="hover:text-[#ffd1d8]"
               >
                 info@hvacnation.com
               </a>
@@ -1043,7 +1109,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="text-center text-[#005baa] pt-8 text-xs mt-6 border-t border-[#e0e4ea]">
+        <div className="text-center text-white pt-8 text-xs mt-6 border-t border-[#004a8d] bg-[#005baa]">
           &copy; {new Date().getFullYear()} HVAC Nation. All rights reserved.
         </div>
       </footer>

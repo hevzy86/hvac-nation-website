@@ -41,15 +41,15 @@ export default function ServiceAreaMap() {
 
   if (!isLoaded)
     return (
-      <div style={{ height: 420, display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <div style={{ height: 520, display: "flex", alignItems: "center", justifyContent: "center" }}>
         Loading map...
       </div>
     );
 
   return (
-    <div style={{ position: "relative", width: "100%", height: 420 }}>
+    <div style={{ position: "relative", width: "100%", height: 520 }}>
       <GoogleMap
-        mapContainerStyle={{ width: "100%", height: "420px" }}
+        mapContainerStyle={{ width: "100%", height: "520px" }}
         center={{ lat: 38.5816, lng: -121.4944 }}
         zoom={8}
         options={{
