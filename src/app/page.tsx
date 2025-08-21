@@ -520,7 +520,7 @@ export default function Home() {
 
           {/* CTA pill (mobile only, centered) */}
           <div
-            className="mt-6 md:mt-8 md:hidden mx-auto flex justify-center items-center gap-3 bg-white rounded-full px-3 md:px-4 py-2 md:py-2.5 shadow-xl border border-[#e0e4ea]"
+            className="mt-6 md:mt-8 md:hidden mx-auto flex justify-center items-center gap-3 bg-white/75 backdrop-blur-md rounded-full px-3 md:px-4 py-2 md:py-2.5 shadow-xl border border-white/60"
             style={{ boxShadow: "0 14px 30px rgba(0,0,0,0.15)" }}
           >
             <a
@@ -603,7 +603,7 @@ export default function Home() {
             ].map((card) => (
               <div
                 key={card.title}
-                className="group bg-[#d7263d] text-white rounded-2xl shadow-xl p-4 md:p-5 flex flex-col items-center border border-[#c01f32] transform transition-all duration-300 hover:-translate-y-1.5 focus-within:-translate-y-1.5 hover:shadow-2xl focus-within:shadow-2xl focus-within:ring-2 focus-within:ring-white/70 cursor-pointer"
+                className="group bg-[#d7263d] text-white rounded-2xl shadow-xl p-4 md:p-5 flex flex-col items-center border border-[#c01f32] transform transition-all duration-300 hover:-translate-y-1.5 focus-within:-translate-y-1.5 active:-translate-y-1.5 hover:shadow-2xl focus-within:shadow-2xl active:shadow-2xl focus-within:ring-2 focus-within:ring-white/70 cursor-pointer touch-manipulation"
                 style={{ boxShadow: "0 18px 30px rgba(215,38,61,0.25)" }}
               >
                 <div className="-mt-9 mb-2 md:mb-3 w-14 h-14 md:w-16 md:h-16 rounded-full bg-white shadow flex items-center justify-center border border-[#e0e4ea]">
@@ -612,7 +612,7 @@ export default function Home() {
                     alt={card.title}
                     width={36}
                     height={36}
-                    className="transition-transform duration-500 group-hover:animate-spin group-focus-within:animate-spin"
+                    className="transition-transform duration-500 motion-safe:group-hover:animate-spin motion-safe:group-focus-within:animate-spin motion-safe:group-active:animate-spin motion-safe:active:animate-spin"
                   />
                 </div>
                 <div className="text-lg md:text-xl font-extrabold tracking-wide mb-3">
