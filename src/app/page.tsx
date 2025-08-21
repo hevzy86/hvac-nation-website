@@ -412,34 +412,32 @@ export default function Home() {
         {/* Mobile menu panel */}
         <div className={`md:hidden border-t border-[#e0e4ea] bg-white ${mobileOpen ? "block" : "hidden"}`}>
           <div className="px-4 py-3">
-            {/* Utility quick actions */}
-            <div className="flex gap-2 mb-3">
-              <a
-                href="tel:+1234567890"
-                className="flex-1 flex items-center justify-center gap-2 rounded-full bg-[#d7263d] text-white px-3 py-2 font-semibold"
-              >
-                <span>☎</span>
-                <span>(234) 567-890</span>
-              </a>
-              <button
-                onClick={() => openQuote()}
-                className="flex-1 flex items-center justify-center gap-2 rounded-full bg-[#005baa] text-white px-3 py-2 font-semibold"
-              >
-                <span>📅</span>
-                <span>Schedule</span>
-              </button>
-            </div>
+            {/* Quick actions removed (duplicated in sticky footer) */}
 
             {/* Accordion sections */}
             <div className="divide-y divide-[#e0e4ea]">
               {/* Cooling */}
               <div>
                 <button
-                  className="w-full flex items-center justify-between py-3 font-semibold text-[#2c3545]"
+                  className={`relative w-full flex items-center justify-between py-3 font-bold uppercase tracking-wide text-[#2c3545] after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-[#d7263d] after:rounded-full after:transition-all after:duration-200 ${openSection === "cooling" ? "after:w-full" : "after:w-0"}`}
                   onClick={() => setOpenSection(openSection === "cooling" ? null : "cooling")}
                 >
                   <span>Cooling</span>
-                  <span className="text-[#9aa6b2]">{openSection === "cooling" ? "▴" : "▾"}</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="18"
+                    height="18"
+                    className={`text-[#9aa6b2] transition-transform ${openSection === "cooling" ? "rotate-180" : "rotate-0"}`}
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
                 </button>
                 {openSection === "cooling" && (
                   <ul className="pb-3 pl-2 space-y-1 text-[#2c3545]">
@@ -455,11 +453,25 @@ export default function Home() {
               {/* Plumbing */}
               <div>
                 <button
-                  className="w-full flex items-center justify-between py-3 font-semibold text-[#2c3545]"
+                  className={`relative w-full flex items-center justify-between py-3 font-bold uppercase tracking-wide text-[#2c3545] after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-[#d7263d] after:rounded-full after:transition-all after:duration-200 ${openSection === "plumbing" ? "after:w-full" : "after:w-0"}`}
                   onClick={() => setOpenSection(openSection === "plumbing" ? null : "plumbing")}
                 >
                   <span>Plumbing</span>
-                  <span className="text-[#9aa6b2]">{openSection === "plumbing" ? "▴" : "▾"}</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="18"
+                    height="18"
+                    className={`text-[#9aa6b2] transition-transform ${openSection === "plumbing" ? "rotate-180" : "rotate-0"}`}
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
                 </button>
                 {openSection === "plumbing" && (
                   <ul className="pb-3 pl-2 space-y-1 text-[#2c3545]">
@@ -475,11 +487,25 @@ export default function Home() {
               {/* Drains */}
               <div>
                 <button
-                  className="w-full flex items-center justify-between py-3 font-semibold text-[#2c3545]"
+                  className={`relative w-full flex items-center justify-between py-3 font-bold uppercase tracking-wide text-[#2c3545] after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-[#d7263d] after:rounded-full after:transition-all after:duration-200 ${openSection === "drains" ? "after:w-full" : "after:w-0"}`}
                   onClick={() => setOpenSection(openSection === "drains" ? null : "drains")}
                 >
                   <span>Drains</span>
-                  <span className="text-[#9aa6b2]">{openSection === "drains" ? "▴" : "▾"}</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="18"
+                    height="18"
+                    className={`text-[#9aa6b2] transition-transform ${openSection === "drains" ? "rotate-180" : "rotate-0"}`}
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
                 </button>
                 {openSection === "drains" && (
                   <ul className="pb-3 pl-2 space-y-1 text-[#2c3545]">
@@ -495,11 +521,25 @@ export default function Home() {
               {/* Heating */}
               <div>
                 <button
-                  className="w-full flex items-center justify-between py-3 font-semibold text-[#2c3545]"
+                  className={`relative w-full flex items-center justify-between py-3 font-bold uppercase tracking-wide text-[#2c3545] after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-[#d7263d] after:rounded-full after:transition-all after:duration-200 ${openSection === "heating" ? "after:w-full" : "after:w-0"}`}
                   onClick={() => setOpenSection(openSection === "heating" ? null : "heating")}
                 >
                   <span>Heating</span>
-                  <span className="text-[#9aa6b2]">{openSection === "heating" ? "▴" : "▾"}</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="18"
+                    height="18"
+                    className={`text-[#9aa6b2] transition-transform ${openSection === "heating" ? "rotate-180" : "rotate-0"}`}
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
                 </button>
                 {openSection === "heating" && (
                   <ul className="pb-3 pl-2 space-y-1 text-[#2c3545]">
