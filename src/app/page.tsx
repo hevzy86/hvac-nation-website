@@ -650,11 +650,8 @@ export default function Home() {
             </p>
           </div>
 
-          {/* CTA pill (mobile only, centered) */}
-          <div
-            className="mt-6 md:mt-8 md:hidden mx-auto flex justify-center items-center gap-3 bg-white/75 backdrop-blur-md rounded-full px-3 md:px-4 py-2 md:py-2.5 shadow-xl border border-white/60"
-            style={{ boxShadow: "0 14px 30px rgba(0,0,0,0.15)" }}
-          >
+          {/* Mobile CTA buttons (no white container) */}
+          <div className="mt-6 md:mt-8 md:hidden mx-auto flex justify-center items-center gap-3">
             <a
               href="tel:+1234567890"
               className="flex items-center gap-2 rounded-full bg-[#d7263d] text-white px-3 md:px-4 py-2 font-semibold"
@@ -1260,17 +1257,14 @@ export default function Home() {
       {/* Sticky Mobile CTA (Call + Schedule) */}
       <div className="fixed md:hidden bottom-0 inset-x-0 z-[60]">
         <div className="mx-auto max-w-3xl px-3 pb-[env(safe-area-inset-bottom)]">
-          <div
-            className="m-3 grid grid-cols-2 gap-3 rounded-full bg-white border border-[#e0e4ea] shadow-xl"
-            style={{ boxShadow: "0 16px 30px rgba(0,0,0,0.18)" }}
-          >
+          <div className="m-3 grid grid-cols-2 gap-3">
             <a
               href="tel:+1234567890"
               className="flex items-center justify-center gap-2 rounded-full bg-[#d7263d] text-white py-3 font-semibold"
               style={{ boxShadow: "inset 0 2px 0 rgba(255,255,255,0.35)" }}
             >
               <span>☎</span>
-              <span>Call</span>
+              <span>(234) 567-890</span>
             </a>
             <button
               onClick={() => openQuote()}
