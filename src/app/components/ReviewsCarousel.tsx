@@ -1,7 +1,18 @@
 "use client";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 
-export type ReviewItem = { name: string; text: string; rating: number; source?: "google" | "site" };
+function initialsFromName(name: string): string {
+  const parts = name.trim().split(/\s+/).slice(0, 2);
+  return parts.map((p) => p[0]?.toUpperCase() ?? "").join("") || "";
+}
+
+export type ReviewItem = {
+  name: string;
+  text: string;
+  rating: number;
+  source?: "google" | "site";
+  avatarUrl?: string;
+};
 
 export default function ReviewsCarousel({
   items,
@@ -38,18 +49,27 @@ export default function ReviewsCarousel({
       onMouseLeave={() => (hoverRef.current = false)}
     >
       {/* Track */}
-      <div className="overflow-hidden">
+      <div className="overflow-visible">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 transition-transform">
           {visible.map((r, i) => (
-            <div key={`${index}-${i}`} className="bg-white rounded-xl p-6 shadow border border-[#e0e4ea]">
-              <div className="flex items-center mb-2">
-                <span className="text-lg font-semibold text-[#005baa] mr-2">{r.name}</span>
-                <span className="text-[#005baa]">{"★".repeat(r.rating)}</span>
-                {r.source === "google" && (
-                  <span className="ml-auto text-xs text-[#666]">Google</span>
+            <div key={`${index}-${i}`} className="relative bg-white rounded-xl p-6 pt-10 mt-6 md:mt-8 shadow border border-[#e0e4ea]">
+              {/* Avatar centered and overlapping top */}
+              <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full border-2 border-white shadow overflow-hidden flex items-center justify-center bg-gradient-to-br from-[#ff7aa8] to-[#ffce54] z-10">
+                {r.avatarUrl ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={r.avatarUrl} alt={`${r.name} avatar`} className="w-full h-full object-cover" />
+                ) : (
+                  <span className="text-white font-bold text-sm">{initialsFromName(r.name)}</span>
                 )}
               </div>
-              <div className="text-[#222] text-sm">{r.text}</div>
+
+              {/* Name and gold stars centered */}
+              <div className="text-center mb-2">
+                <div className="text-lg font-semibold text-[#005baa]">{r.name}</div>
+                <div className="mt-1 text-[#f5c518]">{"★".repeat(Math.max(0, Math.round(r.rating)))}</div>
+              </div>
+
+              <div className="text-[#222] text-sm text-center">{r.text}</div>
             </div>
           ))}
         </div>

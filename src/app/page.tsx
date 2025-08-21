@@ -393,9 +393,19 @@ export default function Home() {
 
         {/* secondary nav — primary categories on left, utility links on right */}
         <div className="hidden md:flex bg-white h-10 items-center border-b border-[#e0e4ea]">
-          <div className="max-w-6xl mx-auto w-full px-4 relative flex items-center justify-end">
+          <div className="max-w-7xl mx-auto w-full px-4 grid grid-cols-[auto_1fr_auto] items-center">
+            {/* Left spacer mirrors right links to keep center true */}
+            <div className="invisible select-none" aria-hidden>
+              <div className="flex items-center gap-6 text-sm">
+                <span>Make‑A‑Wish®</span>
+                <span>All Offers</span>
+                <span>Contact Us</span>
+                <span>About Us</span>
+              </div>
+            </div>
+
             {/* Primary categories centered */}
-            <nav className="absolute left-1/2 -translate-x-1/2 top-0 h-full z-20 flex items-center gap-6 text-sm text-[#2c3545]">
+            <nav className="justify-self-center h-full z-20 flex items-center gap-6 text-sm text-[#2c3545]">
               {/* Cooling */}
               <div className="relative group">
                 <button className="relative px-1.5 py-2 font-bold uppercase tracking-wide flex items-center gap-1 after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-[#d7263d] after:rounded-full after:w-0 group-hover:after:w-full hover:after:w-full after:transition-all after:duration-200">
@@ -466,7 +476,7 @@ export default function Home() {
             </nav>
 
             {/* Utility links on the right */}
-            <div className="ml-auto flex items-center gap-6 text-sm text-[#2c3545]">
+            <div className="justify-self-end flex items-center gap-6 text-sm text-[#2c3545]">
               <a href="#" className="hover:text-[#005baa] underline decoration-transparent hover:decoration-[#005baa] decoration-2 underline-offset-8">Make‑A‑Wish®</a>
               <a href="#" className="hover:text-[#005baa] underline decoration-transparent hover:decoration-[#005baa] decoration-2 underline-offset-8">All Offers</a>
               <a href="#" className="hover:text-[#005baa] underline decoration-transparent hover:decoration-[#005baa] decoration-2 underline-offset-8">Contact Us</a>
@@ -508,9 +518,9 @@ export default function Home() {
             </p>
           </div>
 
-          {/* CTA pill (centered) */}
+          {/* CTA pill (mobile only, centered) */}
           <div
-            className="mt-6 md:mt-8 mx-auto inline-flex items-center gap-3 bg-white rounded-full px-3 md:px-4 py-2 md:py-2.5 shadow-xl border border-[#e0e4ea]"
+            className="mt-6 md:mt-8 md:hidden mx-auto flex justify-center items-center gap-3 bg-white rounded-full px-3 md:px-4 py-2 md:py-2.5 shadow-xl border border-[#e0e4ea]"
             style={{ boxShadow: "0 14px 30px rgba(0,0,0,0.15)" }}
           >
             <a
@@ -837,7 +847,7 @@ export default function Home() {
       <MapSection />
 
       {/* Full Reviews (Carousel) below Hero */}
-      <section className="max-w-6xl mx-auto px-4 py-10 md:py-12 bg-[#005baa] rounded-2xl">
+      <section className="max-w-6xl mx-auto px-4 py-10 md:py-12 my-12 md:my-16 bg-[#005baa] rounded-2xl">
         {/* Top: primary CTA to leave a review on Google */}
         <div className="mb-6 flex justify-center">
           <a
@@ -882,7 +892,7 @@ export default function Home() {
       </section>
 
       {/* Trust Section — compact KPI + Warranty (placed right after Hero) */}
-      <section className="max-w-6xl mx-auto px-4 mt-10 md:mt-12">
+      <section className="max-w-6xl mx-auto px-4 my-12 md:my-16">
         <div className="relative max-w-5xl mx-auto">
           {/* KPI pill bar */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 bg-white/70 backdrop-blur-sm border border-[#e0e4ea] rounded-3xl shadow-sm px-6 py-5 md:px-8 md:py-6 sm:divide-x sm:divide-[#e0e4ea]/60">
