@@ -603,7 +603,7 @@ export default function Home() {
             ].map((card) => (
               <div
                 key={card.title}
-                className="bg-[#d7263d] text-white rounded-2xl shadow-xl p-4 md:p-5 flex flex-col items-center border border-[#c01f32]"
+                className="group bg-[#d7263d] text-white rounded-2xl shadow-xl p-4 md:p-5 flex flex-col items-center border border-[#c01f32] transform transition-all duration-300 hover:-translate-y-1.5 focus-within:-translate-y-1.5 hover:shadow-2xl focus-within:shadow-2xl focus-within:ring-2 focus-within:ring-white/70 cursor-pointer"
                 style={{ boxShadow: "0 18px 30px rgba(215,38,61,0.25)" }}
               >
                 <div className="-mt-9 mb-2 md:mb-3 w-14 h-14 md:w-16 md:h-16 rounded-full bg-white shadow flex items-center justify-center border border-[#e0e4ea]">
@@ -612,6 +612,7 @@ export default function Home() {
                     alt={card.title}
                     width={36}
                     height={36}
+                    className="transition-transform duration-500 group-hover:animate-spin group-focus-within:animate-spin"
                   />
                 </div>
                 <div className="text-lg md:text-xl font-extrabold tracking-wide mb-3">
