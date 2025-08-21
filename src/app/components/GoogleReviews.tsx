@@ -24,8 +24,9 @@ export default function GoogleReviews() {
         if (!res.ok) throw new Error("Failed to load reviews");
         const data = await res.json();
         setReviews(data?.reviews ?? []);
-      } catch (e: any) {
-        setError(e?.message || "Failed to load reviews");
+      } catch (e: unknown) {
+        const message = e instanceof Error ? e.message : "Failed to load reviews";
+        setError(message);
       } finally {
         setLoading(false);
       }

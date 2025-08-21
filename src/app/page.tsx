@@ -393,9 +393,9 @@ export default function Home() {
 
         {/* secondary nav — primary categories on left, utility links on right */}
         <div className="hidden md:flex bg-white h-10 items-center border-b border-[#e0e4ea]">
-          <div className="max-w-6xl mx-auto w-full px-4 flex items-stretch justify-between">
-            {/* Primary categories inline */}
-            <nav className="relative z-20 flex items-center gap-6 text-sm text-[#2c3545]">
+          <div className="max-w-6xl mx-auto w-full px-4 relative flex items-center justify-end">
+            {/* Primary categories centered */}
+            <nav className="absolute left-1/2 -translate-x-1/2 top-0 h-full z-20 flex items-center gap-6 text-sm text-[#2c3545]">
               {/* Cooling */}
               <div className="relative group">
                 <button className="relative px-1.5 py-2 font-bold uppercase tracking-wide flex items-center gap-1 after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-[#d7263d] after:rounded-full after:w-0 group-hover:after:w-full hover:after:w-full after:transition-all after:duration-200">
@@ -466,7 +466,7 @@ export default function Home() {
             </nav>
 
             {/* Utility links on the right */}
-            <div className="flex items-center gap-6 text-sm text-[#2c3545]">
+            <div className="ml-auto flex items-center gap-6 text-sm text-[#2c3545]">
               <a href="#" className="hover:text-[#005baa] underline decoration-transparent hover:decoration-[#005baa] decoration-2 underline-offset-8">Make‑A‑Wish®</a>
               <a href="#" className="hover:text-[#005baa] underline decoration-transparent hover:decoration-[#005baa] decoration-2 underline-offset-8">All Offers</a>
               <a href="#" className="hover:text-[#005baa] underline decoration-transparent hover:decoration-[#005baa] decoration-2 underline-offset-8">Contact Us</a>

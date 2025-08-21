@@ -45,9 +45,24 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: 'Failed to fetch Google data' }, { status: 502 });
     }
     const data = await res.json();
-    const details = data?.result;
+    const details = data?.result as {
+      name?: string;
+      rating?: number;
+      user_ratings_total?: number;
+      reviews?: GoogleReview[];
+    } | undefined;
 
-    const rawReviews: any[] = Array.isArray(details?.reviews) ? details.reviews : [];
+    type GoogleReview = {
+      author_name?: string;
+      rating?: number;
+      text?: string;
+      time?: number; // epoch seconds
+      relative_time_description?: string;
+      author_url?: string;
+      profile_photo_url?: string;
+    };
+
+    const rawReviews: GoogleReview[] = Array.isArray(details?.reviews) ? details!.reviews! : [];
 
     // Normalize reviews
     type Review = {
@@ -61,7 +76,7 @@ export async function GET(request: Request) {
       profile_photo_url?: string;
     };
 
-    const normalized: Review[] = rawReviews.map((r: any) => ({
+    const normalized: Review[] = rawReviews.map((r) => ({
       review_id: String(r?.time ?? '') + '_' + String(r?.author_name ?? ''),
       author_name: r?.author_name ?? 'Anonymous',
       rating: Number(r?.rating ?? 0),
@@ -78,6 +93,7 @@ export async function GET(request: Request) {
     let approvedSet = new Set<string>();
 
     if (ids.length) {
+      type ApprovalRow = { review_id: string; approved: boolean };
       const { data: approvals, error } = await supabase
         .from('google_review_approvals')
         .select('review_id, approved')
@@ -85,7 +101,8 @@ export async function GET(request: Request) {
       if (error) {
         console.error('Supabase approvals error', error);
       } else {
-        approvedSet = new Set((approvals ?? []).filter((a: any) => a.approved).map((a: any) => a.review_id));
+        const rows = (approvals ?? []) as ApprovalRow[];
+        approvedSet = new Set(rows.filter((a) => a.approved).map((a) => a.review_id));
       }
     }
 

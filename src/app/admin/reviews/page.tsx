@@ -26,8 +26,9 @@ export default function AdminReviewsPage() {
       if (!res.ok) throw new Error("Failed to fetch reviews");
       const data = await res.json();
       setItems(data?.reviews ?? []);
-    } catch (e: any) {
-      setError(e?.message || "Failed to fetch reviews");
+    } catch (e: unknown) {
+      const message = e instanceof Error ? e.message : "Failed to fetch reviews";
+      setError(message);
     } finally {
       setLoading(false);
     }
@@ -43,7 +44,7 @@ export default function AdminReviewsPage() {
         body: JSON.stringify({ review_id, approved: next }),
       });
       setItems((prev) => prev.map((r) => r.review_id === review_id ? { ...r, approved: next } : r));
-    } catch (e) {
+    } catch {
       // noop
     }
   };
