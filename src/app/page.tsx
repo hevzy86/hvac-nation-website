@@ -727,6 +727,13 @@ export default function Home() {
               <span className="text-[#f59e0b]">★★★★★</span>
               <span className="text-xs md:text-sm">6222 Reviews</span>
             </div>
+            {/* Mobile-only Google reviews badge */}
+            <div className="sm:hidden w-full mt-2 flex items-center justify-center gap-2 text-[#2c3545]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/images/google.png" alt="Google" width={16} height={16} />
+              <span className="text-[#f59e0b] text-sm">★★★★★</span>
+              <span className="text-xs">6222 Reviews</span>
+            </div>
           </div>
         </div>
 
@@ -790,7 +797,17 @@ export default function Home() {
                     alt={card.title}
                     width={36}
                     height={36}
-                    className="transition-transform duration-500 motion-safe:group-hover:animate-spin motion-safe:group-focus-within:animate-spin motion-safe:group-active:animate-spin motion-safe:active:animate-spin"
+                    className={
+                      card.key === "plumbing"
+                        ? "motion-safe:group-hover:[animation:plumbingFlow_1.2s_ease-in-out_infinite] motion-safe:group-focus-within:[animation:plumbingFlow_1.2s_ease-in-out_infinite] motion-safe:group-active:[animation:plumbingFlow_1.2s_ease-in-out_infinite] transition-transform duration-300 ease-out will-change-transform"
+                        : card.key === "heating"
+                        ? "motion-safe:group-hover:[animation:heatingFlicker_1.2s_ease-in-out_infinite] motion-safe:group-focus-within:[animation:heatingFlicker_1.2s_ease-in-out_infinite] motion-safe:group-active:[animation:heatingFlicker_1.2s_ease-in-out_infinite] transition-transform duration-300 ease-out will-change-transform"
+                        : card.key === "drains"
+                        ? "motion-safe:group-hover:[animation:drainsWave_1.2s_ease-in-out_infinite] motion-safe:group-focus-within:[animation:drainsWave_1.2s_ease-in-out_infinite] motion-safe:group-active:[animation:drainsWave_1.2s_ease-in-out_infinite] transition-transform duration-300 ease-out will-change-transform"
+                        : card.key === "cooling"
+                        ? "motion-safe:group-hover:[animation:coolingSpin_1.2s_linear_infinite] motion-safe:group-focus-within:[animation:coolingSpin_1.2s_linear_infinite] motion-safe:group-active:[animation:coolingSpin_1.2s_linear_infinite] transition-transform duration-300 ease-out will-change-transform"
+                        : "transition-transform duration-300 ease-out will-change-transform"
+                    }
                   />
                 </div>
                 <div className="text-lg md:text-xl font-extrabold tracking-wide mb-3">
@@ -811,6 +828,31 @@ export default function Home() {
               </div>
             ))}
           </div>
+          {/* Animation keyframes for original raster icons */}
+          <style jsx>{`
+            @keyframes plumbingFlow {
+              0%, 100% { transform: translateY(0); }
+              50% { transform: translateY(2px); }
+            }
+            @keyframes heatingFlicker {
+              0%, 100% { transform: scale(1); filter: brightness(1); }
+              50% { transform: scale(1.10); filter: brightness(1.18); }
+            }
+            @keyframes drainsWave {
+              0% { transform: rotate(0deg) scaleY(0.95); }
+              25% { transform: rotate(2deg) scaleY(1.05); }
+              50% { transform: rotate(0deg) scaleY(0.95); }
+              75% { transform: rotate(-2deg) scaleY(1.05); }
+              100% { transform: rotate(0deg) scaleY(0.95); }
+            }
+            @keyframes coolingSpin {
+              from { transform: rotate(0deg); }
+              to { transform: rotate(360deg); }
+            }
+            @media (prefers-reduced-motion: reduce) {
+              * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+            }
+          `}</style>
         </div>
       </section>
 
