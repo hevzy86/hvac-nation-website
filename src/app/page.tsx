@@ -397,14 +397,14 @@ export default function Home() {
                 <span>Schedule Now</span>
               </button>
               <div className="hidden xl:flex items-center gap-2 text-[#2c3545] ml-auto shrink-0">
-                <span className="text-[#f59e0b]">★★★★★</span>
-                <span className="text-xs md:text-sm">6222 Reviews</span>
                 <Image
-                  src="/globe.svg"
-                  alt="reviews"
+                  src="/images/google.png"
+                  alt="Google"
                   width={18}
                   height={18}
                 />
+                <span className="text-[#f59e0b]">★★★★★</span>
+                <span className="text-xs md:text-sm">6222 Reviews</span>
               </div>
             </div>
           </div>
@@ -718,14 +718,14 @@ export default function Home() {
               <span>Schedule Now</span>
             </button>
             <div className="hidden sm:flex items-center gap-2 text-[#2c3545] ml-1">
-              <span className="text-[#f59e0b]">★★★★★</span>
-              <span className="text-xs md:text-sm">6222 Reviews</span>
               <Image
-                src="/globe.svg"
-                alt="reviews"
+                src="/images/google.png"
+                alt="Google"
                 width={18}
                 height={18}
               />
+              <span className="text-[#f59e0b]">★★★★★</span>
+              <span className="text-xs md:text-sm">6222 Reviews</span>
             </div>
           </div>
         </div>

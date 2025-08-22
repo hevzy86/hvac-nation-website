@@ -66,7 +66,11 @@ export default function ReviewsCarousel({
               {/* Name and gold stars centered */}
               <div className="text-center mb-2">
                 <div className="text-lg font-semibold text-[#005baa]">{r.name}</div>
-                <div className="mt-1 text-[#f5c518]">{"★".repeat(Math.max(0, Math.round(r.rating)))}</div>
+                <div className="mt-1 flex items-center justify-center gap-2 text-[#f5c518]">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/images/google.png" alt="Google" width={16} height={16} />
+                  <span>{"★".repeat(Math.max(0, Math.round(r.rating)))}</span>
+                </div>
               </div>
 
               <div className="text-[#222] text-sm text-center">{r.text}</div>

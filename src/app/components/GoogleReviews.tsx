@@ -41,7 +41,9 @@ export default function GoogleReviews() {
     <section className="max-w-5xl mx-auto px-4 py-10">
       <h3 className="text-xl font-bold mb-4 text-[#005baa] flex items-center gap-2">
         <span>What customers say on Google</span>
-        <img src="/globe.svg" alt="google" width={18} height={18} />
+        {/* Provided Google icon */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/images/google.png" alt="Google" width={18} height={18} />
       </h3>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {reviews.map((r) => (
