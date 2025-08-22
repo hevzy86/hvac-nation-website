@@ -1048,6 +1048,7 @@ export default function Home() {
         {/* Bottom: trust strip with 'Read More Reviews' */}
         <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 bg-white border border-[#e0e4ea] rounded-full px-4 py-2 shadow-sm">
           <div className="flex items-center gap-2 text-[#2c3545] text-sm">
+            <img src="/images/google.png" alt="Google" width={18} height={18} />
             <span className="text-[#f59e0b]">★★★★★</span>
             <span className="font-semibold text-[#005baa]">5.0</span>
             <span>•</span>
