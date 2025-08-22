@@ -690,49 +690,33 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Mobile CTA buttons (no white container) */}
-          <div className="mt-6 md:mt-8 md:hidden mx-auto flex justify-center items-center gap-3">
-            <a
-              href="tel:+1234567890"
-              className="flex items-center gap-2 rounded-full bg-[#d7263d] text-white px-3 md:px-4 py-2 font-semibold"
-              style={{ boxShadow: "inset 0 2px 0 rgba(255,255,255,0.35)" }}
+          {/* Mobile CTA pill (matches preferred style) */}
+          <div className="mt-6 md:mt-8 md:hidden mx-auto flex justify-center">
+            <div
+              className="flex items-center gap-2 whitespace-nowrap bg-white rounded-full w-full max-w-[680px] px-2 py-1.5 shadow-xl border border-[#e0e4ea]"
+              style={{ boxShadow: "0 14px 30px rgba(0,0,0,0.15)" }}
             >
-              {/* Lime-green phone icon */}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="#a3e635"
-                aria-hidden="true"
+              <a
+                href="tel:+1234567890"
+                className="shrink-0 flex items-center gap-2 rounded-full bg-[#d7263d] text-white px-3 py-1.5 font-semibold"
+                style={{ boxShadow: "inset 0 2px 0 rgba(255,255,255,0.35)" }}
               >
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.09 4.2 2 2 0 0 1 4.11 2h2.94a2 2 0 0 1 2 1.72c.12.9.33 1.77.62 2.61a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.47-1.14a2 2 0 0 1 2.11-.45c.84.29 1.71.5 2.61.62A2 2 0 0 1 22 16.92z"/>
-              </svg>
-              <span>(234) 567-890</span>
-            </a>
-            <button
-              onClick={() => openQuote()}
-              className="flex items-center gap-2 rounded-full bg-[#e6f0ff] text-[#005baa] border border-[#cdddfb] px-3 md:px-4 py-2 font-semibold hover:bg-[#dbe8ff]"
-              style={{ boxShadow: "0 2px 0 rgba(0,0,0,0.04)" }}
-            >
-              <span>Schedule Now</span>
-            </button>
-            <div className="hidden sm:flex items-center gap-2 text-[#2c3545] ml-1">
-              <Image
-                src="/images/google.png"
-                alt="Google"
-                width={18}
-                height={18}
-              />
-              <span className="text-[#f59e0b]">★★★★★</span>
-              <span className="text-xs md:text-sm">6222 Reviews</span>
-            </div>
-            {/* Mobile-only Google reviews badge */}
-            <div className="sm:hidden w-full mt-2 flex items-center justify-center gap-2 text-[#2c3545]">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/google.png" alt="Google" width={16} height={16} />
-              <span className="text-[#f59e0b] text-sm">★★★★★</span>
-              <span className="text-xs">6222 Reviews</span>
+                <span className="text-base leading-none">☎</span>
+                <span className="text-sm">(234) 567-890</span>
+              </a>
+              <button
+                onClick={() => openQuote()}
+                className="shrink-0 flex items-center gap-2 rounded-full bg-[#005baa] text-white px-3 py-1.5 font-semibold hover:bg-[#004a8d]"
+                style={{ boxShadow: "inset 0 2px 0 rgba(255,255,255,0.35)" }}
+              >
+                <span className="text-base leading-none">📅</span>
+                <span className="text-sm">Schedule Now</span>
+              </button>
+              <div className="flex items-center gap-2 text-[#2c3545] ml-auto shrink-0">
+                <Image src="/images/google.png" alt="Google" width={18} height={18} />
+                <span className="text-[#f59e0b]">★★★★★</span>
+                <span className="text-xs">6222 Reviews</span>
+              </div>
             </div>
           </div>
         </div>
