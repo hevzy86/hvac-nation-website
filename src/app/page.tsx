@@ -690,33 +690,15 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Mobile CTA pill (matches preferred style) */}
+          {/* Mobile CTA pill — only Google Reviews */}
           <div className="mt-6 md:mt-8 md:hidden mx-auto flex justify-center">
             <div
-              className="flex items-center gap-2 whitespace-nowrap bg-white rounded-full w-full max-w-[680px] px-2 py-1.5 shadow-xl border border-[#e0e4ea]"
+              className="flex items-center justify-center gap-2 whitespace-nowrap bg-white rounded-full w-full max-w-[680px] px-3 py-2 shadow-xl border border-[#e0e4ea]"
               style={{ boxShadow: "0 14px 30px rgba(0,0,0,0.15)" }}
             >
-              <a
-                href="tel:+1234567890"
-                className="shrink-0 flex items-center gap-2 rounded-full bg-[#d7263d] text-white px-3 py-1.5 font-semibold"
-                style={{ boxShadow: "inset 0 2px 0 rgba(255,255,255,0.35)" }}
-              >
-                <span className="text-base leading-none">☎</span>
-                <span className="text-sm">(234) 567-890</span>
-              </a>
-              <button
-                onClick={() => openQuote()}
-                className="shrink-0 flex items-center gap-2 rounded-full bg-[#005baa] text-white px-3 py-1.5 font-semibold hover:bg-[#004a8d]"
-                style={{ boxShadow: "inset 0 2px 0 rgba(255,255,255,0.35)" }}
-              >
-                <span className="text-base leading-none">📅</span>
-                <span className="text-sm">Schedule Now</span>
-              </button>
-              <div className="flex items-center gap-2 text-[#2c3545] ml-auto shrink-0">
-                <Image src="/images/google.png" alt="Google" width={18} height={18} />
-                <span className="text-[#f59e0b]">★★★★★</span>
-                <span className="text-xs">6222 Reviews</span>
-              </div>
+              <Image src="/images/google.png" alt="Google" width={20} height={20} />
+              <span className="text-[#f59e0b] text-sm">★★★★★</span>
+              <span className="text-sm">6222 Reviews</span>
             </div>
           </div>
         </div>
