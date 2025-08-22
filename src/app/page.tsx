@@ -1034,7 +1034,7 @@ export default function Home() {
       <MapSection />
 
       {/* Full Reviews (Carousel) below Hero */}
-      <section className="max-w-6xl mx-auto px-4 py-10 md:py-12 my-12 md:my-16 bg-[#005baa] rounded-2xl">
+      <section className="max-w-6xl mx-auto px-4 py-12 md:py-14 my-12 md:my-16 bg-white/60 backdrop-blur-md border border-white/70 rounded-2xl shadow-md">
         {/* Top: primary CTA to leave a review on Google */}
         <div className="mb-6 flex justify-center">
           <a
@@ -1043,23 +1043,19 @@ export default function Home() {
             }`}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-2 rounded-none bg-[#d7263d] text-white font-medium transition hover:-translate-y-0.5 hover:shadow-lg hover:bg-[#c01f32]"
-            style={{
-              boxShadow:
-                "inset 0 2px 0 rgba(255,255,255,0.35), 0 8px 18px rgba(215, 38, 61, 0.25)",
-            }}
+            className="px-6 py-2 rounded-md bg-gradient-to-r from-[#ef4444] to-[#dc2626] text-white font-semibold tracking-wide transition hover:-translate-y-0.5 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 ring-1 ring-white/40 shadow-[0_10px_22px_rgba(220,38,38,0.25)]"
           >
             Leave a Review on Google
           </a>
         </div>
         <ReviewsCarousel items={reviews} />
         {/* Bottom: trust strip with 'Read More Reviews' */}
-        <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 bg-white border border-[#e0e4ea] rounded-full px-4 py-2 shadow-sm">
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-3 sm:gap-4 bg-white/80 backdrop-blur-sm border border-white/60 rounded-full px-4 py-2 shadow">
           <div className="flex items-center gap-2 text-[#2c3545] text-sm">
             <img src="/images/google.png" alt="Google" width={18} height={18} />
-            <span className="text-[#f59e0b]">★★★★★</span>
+            <span className="text-[#f59e0b] drop-shadow">★★★★★</span>
             <span className="font-semibold text-[#005baa]">5.0</span>
-            <span>•</span>
+            <span className="mx-1 inline-block h-1 w-1 rounded-full bg-[#c9d6e6] align-middle" />
             <span>6,222 Google reviews</span>
           </div>
           <a
@@ -1068,7 +1064,7 @@ export default function Home() {
             }`}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-1.5 rounded-full bg-[#005baa] text-white text-sm font-medium transition hover:-translate-y-0.5 hover:shadow-md"
+            className="px-4 py-1.5 rounded-full bg-[#005baa] text-white text-sm font-medium transition hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 ring-1 ring-white/30"
             style={{
               boxShadow:
                 "inset 0 1px 0 rgba(255,255,255,0.35), 0 6px 14px rgba(0, 91, 170, 0.22)",
