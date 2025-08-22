@@ -693,7 +693,7 @@ export default function Home() {
           {/* Mobile CTA pill — only Google Reviews */}
           <div className="mt-6 md:mt-8 md:hidden mx-auto flex justify-center">
             <div
-              className="flex items-center justify-center gap-2 whitespace-nowrap bg-white/50 backdrop-blur-md rounded-full w-full max-w-[680px] px-3 py-2 shadow-lg border border-white/60"
+              className="inline-flex items-center justify-center gap-2 whitespace-nowrap bg-white/85 rounded-full px-2.5 py-1.5 shadow-lg border border-white/50"
               style={{ boxShadow: "0 12px 28px rgba(0,0,0,0.15)" }}
             >
               <Image src="/images/google.png" alt="Google" width={20} height={20} />
